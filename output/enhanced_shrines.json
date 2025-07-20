@@ -1,0 +1,509 @@
+[
+  {
+    "name_jp": "稲荷神社",
+    "name_en": "",
+    "romaji": "Inari Jinja",
+    "type": "神社",
+    "prefecture": "福井県",
+    "city": "あわら市",
+    "address": "福井県あわら市市姫4-16-2",
+    "lat": 36.20769929588053,
+    "lon": 136.23337561493145,
+    "geohash": "857387b2",
+    "nearest_station": "丸岡駅或芦原温泉駅",
+    "access_time_walk": "",
+    "bus_info": "",
+    "parking": "",
+    "founded_year": "718",
+    "founder": "",
+    "historical_events": [
+      "寶暦11年（1761年）獲得神靈和神領",
+      "明治12年（1879年）被列為村社",
+      "明治21年（1888年）併入東土井的市域"
+    ],
+    "important_cultural_property": [],
+    "unesco": false,
+    "architectural_style": "傳統神社建築",
+    "enshrined_deities": [
+      {
+        "name": "稲荷大神",
+        "role": "農業、豐收、商業和工業的守護神"
+      }
+    ],
+    "prayer_categories": [],
+    "omamori_types": [
+      "平安御守",
+      "幸福御守"
+    ],
+    "goshuin": true,
+    "ceremonies": [],
+    "gate_open": "不明",
+    "gate_close": "不明",
+    "office_hours": "不明",
+    "admission_fee": 0,
+    "annual_festivals": [
+      {
+        "name": "新嘗祭",
+        "date": "11月",
+        "description": "感謝豐收的祭典"
+      },
+      {
+        "name": "春季祭",
+        "date": "4月或5月",
+        "description": "迎接春天的來臨"
+      },
+      {
+        "name": "秋季祭",
+        "date": "9月或10月",
+        "description": "感謝豐收"
+      }
+    ],
+    "highlights": [
+      "春季櫻花",
+      "秋季楓葉"
+    ],
+    "best_seasons": [
+      "春季",
+      "秋季"
+    ],
+    "wheelchair_access": false,
+    "toilets": true,
+    "wifi": false,
+    "photo_policy": "不明",
+    "description": "位於福井縣あわら市的稲荷神社（いなりじんじゃ），是一座歷史悠久且充滿靈氣的神社，其創建可追溯至養老2年（718年），由山城國伏見所勸請而來。這座神社在寶暦11年（1761年）獲得了神靈與神領，並在明治12年（1879年）被列為村社，隨後於明治21年（1888年）併入東土井的市域，見證了歷史的變遷與發展。\n\n稲荷神社主要祭祀的是稲荷大神（宇迦之御霊神），這位神明被信奉為農業、豐收、商業及工業的守護神，信徒們相信祂能帶來繁榮與富饒。神社的建築風格遵循傳統神社的設計，雖然原本的御神體已移至北海道的鶉神社，但神社內仍保留著古老的石逗子，讓人感受到歷史的厚重。\n\n參拜時間通常從早晨至傍晚，且不收取門票費用，參拜者可自由進入，感受神社的靜謐與神聖。交通方面，最近的車站為JR西日本的北陸本線丸岡駅或芦原温泉駅，從車站可搭乘巴士或出租車前往。\n\n稲荷神社一年四季舉辦多種傳統祭典，包括感謝豐收的新嘗祭（11月）、迎接春天的春季祭（4月或5月）及秋季祭（9月或10月），這些活動吸引了眾多信徒與遊客前來參加，感受節慶的氛圍。\n\n此外，神社內設有社務所，供應御守與御朱印，讓參拜者可以帶走平安與幸福的祝福。春季時，櫻花盛開，神社周圍的景色如詩如畫；而秋季則是楓葉如火如荼，無論何時來訪，都能感受到不同的季節魅力。\n\n稲荷神社不僅是信仰的中心，更是歷史與文化的承載體，無論是尋求靈性寄託，還是欣賞自然美景，這裡都是一處值得一遊的聖地。",
+    "phone": "",
+    "url": "http://www.jinja-fukui.jp/detail/index.php?ID=20250509_161426",
+    "sources": [
+      {
+        "title": "稲荷神社（いなりじんじゃ） - Perplexity 綜合資料",
+        "url": "https://perplexity.ai",
+        "snippet": "來自 Perplexity AI 的綜合搜尋結果",
+        "source": "Perplexity"
+      },
+      {
+        "title": "榮稲荷神社 - 福井市/福井県 | Omairi(おまいり)",
+        "url": "https://omairi.club/spots/120673",
+        "snippet": "2023/07/02 ... 榮稲荷神社. さかえいなりじんじゃ. 福井県福井市大手3-8-20. 基本情報. 御朱印 · 見どころ. 寺社人気ランキング 福井県 196位 | 全国 21293位.",
+        "source": "Google"
+      },
+      {
+        "title": "境内の各神社、施設案内 - 越前二の宮 劔神社・つるぎじんじゃ",
+        "url": "https://www.tsurugi-jinja.jp/keidai/",
+        "snippet": "福井県丹生郡越前町織田 113-1（金栄山） TEL 0778-36-0404／FAX 0778-36 ... ➈水木稲荷神社（みずきいなりじんじゃ）. ➉旧神前院護摩堂（きゅうしんぜんいん ...",
+        "source": "Google"
+      },
+      {
+        "title": "福井県神社庁｜検索結果",
+        "url": "https://www.jinja-fukui.jp/result/",
+        "snippet": "稲荷神社. 福井県福井市西河原町30－1. いなりじんじゃ 稲荷神社. 福井県福井市西中野町4－28. いなりじんじゃ 稲荷神社. 福井県福井市日之出（四ツ井）本町27－1. いなりじ ...",
+        "source": "Google"
+      },
+      {
+        "title": "神社一覧",
+        "url": "http://wakayama-jinjacho.or.jp/jdb/sys/user/ListWjtTbl.php",
+        "snippet": "和歌山県にある神社を総合的にご紹介【和歌山県神社庁】 ; いなりじんじゃ（いさいだ）. 稲荷神社（伊作田）. 〒646-0051, 田辺市稲成町1124番地 ; いやじんじゃ. 熊野神社. 〒 ...",
+        "source": "Google"
+      },
+      {
+        "title": "指定神社を探す | 神社本庁",
+        "url": "https://www.jinjahoncho.or.jp/sys/category/jinja",
+        "snippet": "北海道 風連神社（ふうれんじんじゃ）. 北海道 羅臼神社（らうすじんじゃ）. 北海道 石山神社（いしやまじんじゃ）. 青森県 八幡宮（はちまんぐう）. 青森県 稲荷神社（いなりじ ...",
+        "source": "Google"
+      }
+    ]
+  },
+  {
+    "name_jp": "白山神社",
+    "name_en": "",
+    "romaji": "Hakusan Jinja",
+    "type": "神社",
+    "prefecture": "福井県",
+    "city": "大野市",
+    "address": "福井県大野市堂本１２−５−２５",
+    "lat": 35.995499,
+    "lon": 136.509831,
+    "geohash": "96549bdc",
+    "nearest_station": "",
+    "access_time_walk": "",
+    "bus_info": "",
+    "parking": "有",
+    "founded_year": "不明",
+    "founder": "",
+    "historical_events": [],
+    "important_cultural_property": [],
+    "unesco": false,
+    "architectural_style": "",
+    "enshrined_deities": [
+      {
+        "name": "伊奘冊尊",
+        "role": ""
+      },
+      {
+        "name": "天忍穂耳尊",
+        "role": ""
+      },
+      {
+        "name": "大己貴尊",
+        "role": ""
+      }
+    ],
+    "prayer_categories": [],
+    "omamori_types": [],
+    "goshuin": true,
+    "ceremonies": [],
+    "gate_open": "不明",
+    "gate_close": "不明",
+    "office_hours": "不明",
+    "admission_fee": 0,
+    "annual_festivals": [],
+    "highlights": [
+      "四季風景",
+      "御手洗池",
+      "巨木"
+    ],
+    "best_seasons": [],
+    "wheelchair_access": false,
+    "toilets": true,
+    "wifi": false,
+    "photo_policy": "",
+    "description": "平泉寺白山神社，坐落於福井縣勝山市平泉寺町，是一座歷史悠久且充滿靈性的神社。該神社由著名的佛教僧侶泰澄大師於養老元年（717年）創建，最初作為白山信仰的越前國側拠點，隨後成為比叡山延暦寺的末寺，並在室町時代達到其鼎盛時期。然而，天正二年（1574年）時，神社遭遇越前一向一揆的襲擊，整座神社被焚毀，後來由顯海僧正重新建造，至今仍受到信徒的尊崇與庇護。\n\n神社的主要祭神包括本殿供奉的伊奘冊尊、別山社的天忍穗耳尊，以及越南知社的大己貴尊（大國主命）。這些神明象徵著繁榮與庇護，吸引著無數信徒前來參拜。\n\n平泉寺白山神社位於白山國立公園的特別指定區域，境內保留了許多珍貴的歷史遺跡，如泰澄大師修行時遇見女神的「御手洗池」，以及在平成時代發掘出的石畳、石垣和坊院跡，這些遺跡展現了中世宗教都市的繁榮景象，讓人感受到歷史的厚重。\n\n每年，神社舉辦多場盛大的祭典，包括春季祭、夏季祭、秋季祭和冬季祭，分別祈求豐收、避邪、感謝和來年的平安與幸福。這些活動不僅是信仰的表現，也是當地文化的重要組成部分。\n\n前往平泉寺白山神社的交通方式相當便利，最近的車站為JR越美北線的勝山站，遊客可選擇乘坐巴士或出租車前往，亦可自駕前來，神社內設有停車場。此外，神社內還設有便民設施，包括休息區和販賣御守、御朱印的場所，讓遊客能夠輕鬆參拜並獲得紀念。\n\n平泉寺白山神社的四季風景各具特色，無論是春日的櫻花、夏季的綠意盎然、秋天的紅葉，還是冬季的雪景，皆讓人流連忘返。特別是那傳說中的巨木，靜靜守護著這片神聖的土地，讓人感受到自然與靈性的交融。\n\n無論您是尋求靈性寄託，還是想要探索歷史文化，平泉寺白山神社都是一個不可錯過的聖地。",
+    "phone": "",
+    "url": "http://www.jinja-fukui.jp/detail/index.php?ID=20200828_160358",
+    "sources": [
+      {
+        "title": "白山神社（はくさんじんじゃ） - Perplexity 綜合資料",
+        "url": "https://perplexity.ai",
+        "snippet": "來自 Perplexity AI 的綜合搜尋結果",
+        "source": "Perplexity"
+      },
+      {
+        "title": "平泉寺白山神社 | 福井県勝山市平泉寺｜平泉寺白山神社",
+        "url": "https://heisenji.jp/",
+        "snippet": "平泉寺白山神社. 当社は養老元年（七一七）の泰澄大師の手によって創建されました。 白山信仰の拠点のひとつとなった平泉寺は、室町時代の最盛時を迎えたものの天正二年 ...",
+        "source": "Google"
+      },
+      {
+        "title": "福井県のパワースポット「平泉寺白山神社（白山平泉寺）」の ...",
+        "url": "https://fupo.jp/article/heisenji/",
+        "snippet": "平泉寺白山神社（へいせんじはくさんじんじゃ）は、福井県勝山市平泉寺町にある神社で、白山平泉寺とも呼ばれます。 観光スポットとして大人気ですが、歴史的、学術的 ...",
+        "source": "Google"
+      },
+      {
+        "title": "白山神社 | いい池田.jp | 福井県池田町 観光情報サイト",
+        "url": "http://www.e-ikeda.jp/see/p004047.html",
+        "snippet": "2016/03/20 ... 志津原の集落にひっそりと佇み、鳥居の前には樹齢何百年とも知れぬ杉とケヤキの巨木が寄り添う白山（はくさん）神社。 江戸時代後期までは、能が奉納 ...",
+        "source": "Google"
+      },
+      {
+        "title": "北陸鎮護の大社 白山本宮・加賀一ノ宮 白山比咩神社 ｜ 石川県 初詣 ...",
+        "url": "https://www.shirayama.or.jp/",
+        "snippet": "白山比咩神社は、全国三千余社の白山神社の総本宮であり、加賀の国の一ノ宮として篤い崇敬を受け、「白山さん」と呼ばれて親しまれています。初詣、七五三。",
+        "source": "Google"
+      },
+      {
+        "title": "平泉寺白山神社 - Wikipedia",
+        "url": "https://ja.wikipedia.org/wiki/%E5%B9%B3%E6%B3%89%E5%AF%BA%E7%99%BD%E5%B1%B1%E7%A5%9E%E7%A4%BE",
+        "snippet": "平泉寺白山神社（へいせんじはくさんじんじゃ）は、福井県勝山市平泉寺町平泉寺に鎮座する神社。白山信仰の越前国側の拠点として、仏教僧の泰澄により717年に開山され ...",
+        "source": "Google"
+      }
+    ]
+  },
+  {
+    "name_jp": "神子神社",
+    "name_en": "",
+    "romaji": "Mikojinja",
+    "type": "神社",
+    "prefecture": "福井県",
+    "city": "三方上中郡若狭町",
+    "address": "福井県三方上中郡若狭町神子１−１",
+    "lat": 35.623368,
+    "lon": 135.838549,
+    "geohash": "10e3046e",
+    "nearest_station": "小浜站",
+    "access_time_walk": "",
+    "bus_info": "",
+    "parking": "",
+    "founded_year": "不明",
+    "founder": "",
+    "historical_events": [],
+    "important_cultural_property": [],
+    "unesco": false,
+    "architectural_style": "",
+    "enshrined_deities": [
+      {
+        "name": "",
+        "role": ""
+      }
+    ],
+    "prayer_categories": [],
+    "omamori_types": [],
+    "goshuin": true,
+    "ceremonies": [],
+    "gate_open": "",
+    "gate_close": "",
+    "office_hours": "",
+    "admission_fee": 0,
+    "annual_festivals": [],
+    "highlights": [
+      "春季的櫻花季",
+      "秋季的楓葉季",
+      "漁村文化和歷史遺跡"
+    ],
+    "best_seasons": [
+      "春季",
+      "秋季"
+    ],
+    "wheelchair_access": false,
+    "toilets": true,
+    "wifi": false,
+    "photo_policy": "",
+    "description": "位於福井縣三方上中郡若狭町的神子神社（みこじんじゃ），是一座歷史悠久的神社，雖然其確切的創建年份尚無法考證，但根據歷史記錄，這片土地自平安時代以來便承載著豐富的文化與傳說，直至明治時代，已有超過八百年的歷史。神子地區曾經是一個與外界隔絕的陸地孤島，直到昭和44年（1969年）縣道的開通，才得以與外界連結，讓這座神社的神秘面紗逐漸被揭開。\n\n神子神社的主要祭神目前尚不明確，但在日本的神社中，祭神通常與當地的歷史和傳說息息相關，這也使得每座神社都擁有其獨特的靈性和魅力。雖然關於神社的建築樣式和文化財產的具體資料不多，但可以推測，神子神社可能擁有傳統的神明造或流造建築風格，並可能保存著重要的文化遺產，如古老的木造神像。\n\n參拜神子神社的時間一般為早上至晚上，且多數神社不收取參拜費用，讓每位訪客都能自由地感受這片神聖之地的靈氣。前往神社的交通方式相當便利，無論是搭乘公共交通工具如巴士，或是自行駕車，皆可輕鬆抵達。最近的車站為JR小浜線的小浜站，從此可轉乘巴士或出租車前往神社。\n\n神子神社周邊的自然景觀尤為迷人，特別是在春季櫻花盛開和秋季楓葉繽紛的季節，吸引著眾多遊客前來欣賞。此外，若狭町的漁村文化和歷史遺跡也為參拜者提供了更深入了解當地生活的機會。\n\n在神子神社，遊客還可以獲得御守和御朱印，這些護身符和證明書象徵著平安與幸運，具體的取得方式和費用可在神社現場詢問。雖然神子神社的詳細資訊仍需進一步探索，但其獨特的歷史背景和自然美景，無疑使其成為一個值得一遊的靈性聖地。",
+    "phone": "",
+    "url": "http://www.jinja-fukui.jp/detail/index.php?ID=20200819_132955",
+    "sources": [
+      {
+        "title": "神子神社（みこじんじゃ） - Perplexity 綜合資料",
+        "url": "https://perplexity.ai",
+        "snippet": "來自 Perplexity AI 的綜合搜尋結果",
+        "source": "Perplexity"
+      },
+      {
+        "title": "鹿島御子神社（南相馬市鹿島区鹿島町） - Shrine-heritager",
+        "url": "https://shrineheritager.com/kashimamiko-shrine-2/",
+        "snippet": "2023/04/08 ... 鹿島御子神社（かしまみこじんじゃ）は 鹿島神宮（茨城県鹿嶋市）祭神 武甕槌命の御子神 天足別命（あめのたらしわけのみこと）を祀ります 奥州の地を統御 ...",
+        "source": "Google"
+      },
+      {
+        "title": "鹿島御子神社 御朱印 - 南相馬市/福島県 | Omairi(おまいり)",
+        "url": "https://omairi.club/spots/90086/goshuin",
+        "snippet": "鹿島御子神社の御朱印. かしまみこじんじゃ. 福島県南相馬市鹿島区鹿島町199. 基本 ... 福井県, 山梨県, 長野県, 岐阜県, 静岡県, 愛知県, 三重県, 滋賀県, 京都府, 大阪府 ...",
+        "source": "Google"
+      },
+      {
+        "title": "神子神社",
+        "url": "http://www.komainu.org/fukui/mikatakaminakagun/MikoTsunekami/miko.html",
+        "snippet": "神子(みこ)神社. 三方上中郡若狭町神子 (平成22年7月30日). 東経135度50分28.6秒、北緯35度37分12.6秒に鎮座。 ... 滋賀県木之本町）神主、安助の四男、安崇が嘉応二年(1170)神子、常神の領主に任ぜられ、この縁 ...",
+        "source": "Google"
+      },
+      {
+        "title": "高座結御子神社（熱田神宮摂社）の御朱印・アクセス情報（愛知県 ...",
+        "url": "https://hotokami.jp/area/aichi/Hmrtk/Hmrtkkm/Dktgka/144314/",
+        "snippet": "高座結御子神社（たかくらむすびみこじんじゃ）は、愛知県名古屋市熱田区高蔵町にある神社。式内社（名神大社）で、熱田神宮境外摂社。 熱田神宮と同じく尾張の祖神を祀る。",
+        "source": "Google"
+      },
+      {
+        "title": "丹後一宮 元伊勢 籠神社(このじんじゃ) 奥宮 真名井神社（まないじ ...",
+        "url": "https://www.motoise.jp/",
+        "snippet": "伊勢神宮に奉られる天照大神、豊受大神がこの地から伊勢に移されたという故事から元伊勢と呼ばれる古社。奈良時代に丹後の国の一の宮となり、平安時代の「延喜式」には ...",
+        "source": "Google"
+      }
+    ]
+  },
+  {
+    "name_jp": "西廼神社",
+    "name_en": "",
+    "romaji": "Nishino Jinja",
+    "type": "神社",
+    "prefecture": "福井県",
+    "city": "南越前町",
+    "address": "福井県南条郡南越前町西大道１４−２５",
+    "lat": 35.833258,
+    "lon": 136.190589,
+    "geohash": "ced153cf",
+    "nearest_station": "福井站或武生站",
+    "access_time_walk": "",
+    "bus_info": "",
+    "parking": "",
+    "founded_year": "不明",
+    "founder": "",
+    "historical_events": [],
+    "important_cultural_property": [],
+    "unesco": false,
+    "architectural_style": "傳統日本神社建築風格",
+    "enshrined_deities": [
+      {
+        "name": "稻荷神",
+        "role": "農耕神、豐收"
+      }
+    ],
+    "prayer_categories": [],
+    "omamori_types": [],
+    "goshuin": true,
+    "ceremonies": [],
+    "gate_open": "00:00",
+    "gate_close": "23:59",
+    "office_hours": "",
+    "admission_fee": 0,
+    "annual_festivals": [
+      {
+        "name": "稻荷祭",
+        "date": "",
+        "description": "慶祝豐收和農業的繁榮"
+      }
+    ],
+    "highlights": [
+      "傳統建築",
+      "美麗庭園",
+      "櫻花",
+      "楓葉"
+    ],
+    "best_seasons": [
+      "春季",
+      "夏季",
+      "秋季"
+    ],
+    "wheelchair_access": false,
+    "toilets": true,
+    "wifi": false,
+    "photo_policy": "",
+    "description": "西廼神社（にしのじんじゃ），坐落於福井県南条郡南越前町，雖然其創建年份無法考證，但根據日本神社的傳統，許多神社的歷史可追溯至古代，西廼神社亦不例外。這座神社在當地文化中佔有重要地位，承載著豐富的歷史與信仰。\n\n西廼神社主要祭祀的神祇與當地的農耕文化息息相關，可能以稻荷神為主，該神祇不僅是農業的守護神，還與豐收及繁榮密切相連。神社的建築風格遵循傳統日本神社的設計，擁有典雅的鳥居、拜殿及本殿，展現出古樸而莊嚴的氛圍。\n\n參拜者可隨時造訪西廼神社，通常不需門票，除非遇到特定的活動或祭典。神社附近的交通便利，最近的車站為JR西日本的北陸本線福井站或武生站，從這些車站可輕鬆搭乘公交或出租車前往。\n\n在西廼神社，四季的變化為參拜者帶來不同的美景。春天時，櫻花盛開，夏季則可參加熱鬧的夏祭り，秋天則是欣賞楓葉的最佳時機。此外，神社內還有古老的樹木與石燈籠等文化遺產，增添了其歷史的厚重感。\n\n西廼神社亦提供御守與御朱印，這些護身符與紀念印章是參拜者祈求平安與祝福的象徵。神社內的便民設施，如飲水處與休息區，為參拜者提供了便利。\n\n總之，西廼神社作為一座傳統的日本神社，無論是其深厚的歷史背景、獨特的文化活動，還是四季分明的自然景觀，都使其成為值得一訪的靜謐之地。",
+    "phone": "",
+    "url": "http://www.jinja-fukui.jp/detail/index.php?ID=20200806_153230",
+    "sources": [
+      {
+        "title": "西廼神社（にしのじんじゃ） - Perplexity 綜合資料",
+        "url": "https://perplexity.ai",
+        "snippet": "來自 Perplexity AI 的綜合搜尋結果",
+        "source": "Perplexity"
+      },
+      {
+        "title": "西野神社 （安産 縁結び 厄除け 厄祓い 勝運上昇）",
+        "url": "https://nishinojinja.or.jp/",
+        "snippet": "6月30日（月） 午後3時より齋行. 事前に大祓人形とお志をお納めの上、ご参列ください。 茅の輪は26日（木）午後より舗設致します。 社報 ｢紫陽花乃聲｣ 発行致し ...",
+        "source": "Google"
+      },
+      {
+        "title": "西野神社 ｜神社情報｜あまはし",
+        "url": "https://amahashi.jp/jinja/nishinojinja/",
+        "snippet": "西野神社（にしのじんじゃ）は、北海道札幌市西区に鎮座する、神社本庁包括下（北海道神社庁札幌支部管内）の神社で、旧社格は村社。札幌市西区の西野・平和・福井の3 ...",
+        "source": "Google"
+      },
+      {
+        "title": "にしのじんじゃ | 西野神社 （安産 縁結び 厄除け 厄祓い 勝運上昇）",
+        "url": "https://nishinojinja.or.jp/%E3%81%AB%E3%81%97%E3%81%AE%E3%81%98%E3%82%93%E3%81%98%E3%82%83/",
+        "snippet": "伊勢神宮は天照大御神さまがおすまいになる神社で、三重県にある日本でもっともとおとい神社です。天照大御神さまは、天皇さまのごそせんで、日本がいつまでも平和で ...",
+        "source": "Google"
+      },
+      {
+        "title": "福井睦神社例祭 - 西野神社 社務日誌",
+        "url": "https://nisinojinnjya.hatenablog.com/entry/20070430",
+        "snippet": "2007/04/30 ... ... じんじゃ／写真参照）に於いて、午前11時から例祭が執り行われ、宮司と私の二人で御奉仕させて頂きました。 総代Oさんの住んでおられる福井地区は福井県 ...",
+        "source": "Google"
+      },
+      {
+        "title": "令和四年西野神社秋まつり | 西野神社 （安産 縁結び 厄除け 厄祓い ...",
+        "url": "https://nishinojinja.or.jp/%E8%A5%BF%E9%87%8E%E7%A5%9E%E7%A4%BE%E3%81%AE%E3%81%94%E6%A1%88%E5%86%85/%E4%BB%A4%E5%92%8C%E5%9B%9B%E5%B9%B4%E8%A5%BF%E9%87%8E%E7%A5%9E%E7%A4%BE%E7%A7%8B%E3%81%BE%E3%81%A4%E3%82%8A/",
+        "snippet": "ふるさとの福井県を訪ねた福井町内会の人達が、300年も前から伝わる「明神ばやし ... 雨天時は土俵にテントを張るなどの雨天対策をするため、原則として、雨天 ...",
+        "source": "Google"
+      }
+    ]
+  },
+  {
+    "name_jp": "八幡神社",
+    "name_en": "",
+    "romaji": "Hachiman Jinja",
+    "type": "神社",
+    "prefecture": "福井県",
+    "city": "福井市",
+    "address": "福井県福井市北山新保町２７−４１",
+    "lat": 36.003748,
+    "lon": 136.239611,
+    "geohash": "663e1e63",
+    "nearest_station": "福井站",
+    "access_time_walk": "",
+    "bus_info": "",
+    "parking": "",
+    "founded_year": "959",
+    "founder": "源満仲",
+    "historical_events": [],
+    "important_cultural_property": [],
+    "unesco": false,
+    "architectural_style": "傳統的日本神社建築",
+    "enshrined_deities": [
+      {
+        "name": "八幡大神",
+        "role": "戰爭、農業和商業的守護神"
+      }
+    ],
+    "prayer_categories": [],
+    "omamori_types": [],
+    "goshuin": true,
+    "ceremonies": [],
+    "gate_open": "不明",
+    "gate_close": "不明",
+    "office_hours": "不明",
+    "admission_fee": 0,
+    "annual_festivals": [
+      {
+        "name": "春季祭",
+        "date": "4月或5月",
+        "description": "祈求豐收和平安"
+      },
+      {
+        "name": "秋季祭",
+        "date": "9月或10月",
+        "description": "感謝豐收和祈求來年的平安"
+      },
+      {
+        "name": "新年祭",
+        "date": "1月1日",
+        "description": "祈求新的一年的平安和幸福"
+      }
+    ],
+    "highlights": [
+      "春季櫻花盛開",
+      "夏季祭典",
+      "秋季楓葉變紅",
+      "冬季新年裝飾"
+    ],
+    "best_seasons": [
+      "春季",
+      "秋季"
+    ],
+    "wheelchair_access": false,
+    "toilets": true,
+    "wifi": false,
+    "photo_policy": "",
+    "description": "八幡神社，亦稱和田八幡宮，坐落於福井縣福井市北山新保町，擁有悠久的歷史與深厚的文化底蘊。根據傳說，該神社於平安時代中期的959年，由源滿仲所創建。源滿仲在越前地區擔任守護職，受到靈夢的啟示，向東北方向射箭，箭矢落於現今的和田地區，因而在此建立了神社，並以滿仲八幡御宮之名，祈願平息當地的洪水與疫病，展現了神社在當地社會中的重要性。\n\n和田八幡宮主要祭祀的神明為八幡大神（應神天皇），他被視為戰爭、農業及商業的守護神。這座神社不僅是信仰的中心，更是當地居民心靈的寄託。神社的建築風格典雅，包含本殿、拜殿及鳥居等，展現出傳統日本神社的獨特魅力，並擁有多項文化財產，雖然具體的文化遺產資訊未詳述，但其周圍的銅像與石刻無疑是重要的文化瑰寶。\n\n參拜時間通常從早晨至晚上，具體的開放時間可能因季節或特殊活動而有所變動，而大部分神社的參拜是免費的。前往和田八幡宮的交通也十分便利，最近的車站為JR西日本的福井站，從車站出發可搭乘巴士或出租車輕鬆抵達。\n\n每年，和田八幡宮會舉行多場重要的祭典，如春季祭、秋季祭及新年祭，這些活動不僅是宗教儀式，更是當地文化的盛會，吸引著無數參拜者前來祈求平安與幸福。神社內亦提供御守及御朱印，信徒們可在此獲得護身符或作為參拜的紀念。\n\n四季更迭，和田八幡宮展現出不同的自然風貌：春季櫻花盛開，夏季祭典熱鬧非凡，秋季楓葉如火如荼，冬季新年期間的裝飾更是吸引眾多參拜者。神社內設有便民設施，如參拜所、售賣所及休息區，旨在為每位來訪者提供舒適的參拜體驗。\n\n無論是信仰的追求，還是文化的探索，和田八幡宮都是一處值得細細品味的聖地，期待您的蒞臨。",
+    "phone": "",
+    "url": "http://www.jinja-fukui.jp/detail/index.php?ID=20190729_114853",
+    "sources": [
+      {
+        "title": "八幡神社（はちまんじんじゃ） - Perplexity 綜合資料",
+        "url": "https://perplexity.ai",
+        "snippet": "來自 Perplexity AI 的綜合搜尋結果",
+        "source": "Perplexity"
+      },
+      {
+        "title": "八幡神社の御朱印・アクセス情報（福井県森田駅）|ホトカミ",
+        "url": "https://hotokami.jp/area/fukui/Hkztk/Hkztktk/Dkttpg/140507/",
+        "snippet": "名称. 八幡神社. 読み方. はちまんじんじゃ. 通称. 古市八幡宮. 御朱印, あり. 限定御朱印, なし. 御朱印の郵送対応, なし. 御朱印帳, なし ...",
+        "source": "Google"
+      },
+      {
+        "title": "和歌山県神社庁-小川八幡神社 おがわはちまんじんじゃ-",
+        "url": "https://wakayama-jinjacho.or.jp/jdb/sys/user/GetWjtTbl.php?JinjyaNo=2038",
+        "snippet": "640-1111 海草郡紀美野町福井1539番地 · （主祭神）誉田別命 玉依姫命 和気長足姫尊 （配祀神）大名巳貴尊 少名彦尊 ...",
+        "source": "Google"
+      },
+      {
+        "title": "福井県神社庁｜和田八幡宮",
+        "url": "https://www.jinja-fukui.jp/detail/index.php?ID=20170112_172659",
+        "snippet": "和田八幡宮 ... 天徳3年（959）源義基の嫡男、左馬助源満仲の草創と伝えられる。 満仲の霊夢によって石清水八幡宮を勧請したのが当社であるという。 この時社地東西6町南北13町 ...",
+        "source": "Google"
+      },
+      {
+        "title": "家族の神さま 總社 和田八幡宮 子育て 安産 厄災除け",
+        "url": "https://wada8mangu.com/",
+        "snippet": "福井市のはちまんさま、和田八幡宮は約1060年前に清和源氏の祖、源満仲公によって創建されました。家族3柱の神さまが鎮まり「子育て・安産・厄災除け・家内安全」等、 ...",
+        "source": "Google"
+      },
+      {
+        "title": "八幡神社前(福井県)の時刻表 バス路線一覧 - NAVITIME",
+        "url": "https://www.navitime.co.jp/bus/diagram/direction/00268019/",
+        "snippet": "バス路線一覧. 八幡神社前(福井県) はちまんじんじゃまえ. 降りるバス停を指定して時刻表をみる. どこまで行きますか？ ×. [36]県立病院丸岡線[京福バス]. 丸岡城方面 ...",
+        "source": "Google"
+      }
+    ]
+  }
+]
