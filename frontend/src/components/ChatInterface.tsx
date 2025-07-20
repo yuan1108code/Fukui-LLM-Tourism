@@ -99,10 +99,34 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ messages, onSendMessage, 
             : 'bg-white border border-gray-200'
         }`}>
           {message.text ? (
-            <div className={`prose prose-sm max-w-none ${message.isUser ? 'text-white' : 'text-gray-800'}`}>
-              <p className="whitespace-pre-line leading-relaxed">
-                {message.text}
-              </p>
+            <div className={`prose prose-sm max-w-none ${message.isUser ? 'prose-invert text-white' : 'text-gray-800'}`}>
+              {message.isUser ? (
+                <p className="whitespace-pre-line leading-relaxed">
+                  {message.text}
+                </p>
+              ) : (
+                <ReactMarkdown 
+                  className="markdown-content"
+                  components={{
+                    // 客製化 heading 樣式
+                    h1: ({node, ...props}) => <h1 className="text-lg font-bold mb-2" {...props} />,
+                    h2: ({node, ...props}) => <h2 className="text-base font-semibold mb-2" {...props} />,
+                    h3: ({node, ...props}) => <h3 className="text-sm font-medium mb-1" {...props} />,
+                    // 客製化 paragraph 樣式
+                    p: ({node, ...props}) => <p className="mb-2 leading-relaxed" {...props} />,
+                    // 客製化 list 樣式
+                    ul: ({node, ...props}) => <ul className="list-disc pl-4 mb-2" {...props} />,
+                    ol: ({node, ...props}) => <ol className="list-decimal pl-4 mb-2" {...props} />,
+                    li: ({node, ...props}) => <li className="mb-1" {...props} />,
+                    // 客製化 strong 樣式
+                    strong: ({node, ...props}) => <strong className="font-semibold" {...props} />,
+                    // 客製化 code 樣式
+                    code: ({node, ...props}) => <code className="bg-gray-100 px-1 rounded text-sm" {...props} />,
+                  }}
+                >
+                  {message.text}
+                </ReactMarkdown>
+              )}
             </div>
           ) : (
             <LoadingDots />

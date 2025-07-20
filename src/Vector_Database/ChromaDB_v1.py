@@ -9,6 +9,8 @@ import os
 import re
 import json
 import logging
+import math
+import hashlib
 from typing import List, Dict, Any, Tuple, Optional
 from pathlib import Path
 import chromadb
@@ -84,6 +86,177 @@ class ChromaDBManager:
         except Exception as e:
             self.logger.error(f"OpenAI 客戶端初始化失敗：{e}")
             raise
+    
+    @staticmethod
+    def calculate_distance(lat1: float, lng1: float, lat2: float, lng2: float) -> float:
+        """計算兩個地點之間的距離（公里）
+        
+        使用 Haversine 公式計算球面距離
+        
+        Args:
+            lat1, lng1: 第一個地點的經緯度
+            lat2, lng2: 第二個地點的經緯度
+            
+        Returns:
+            距離（公里）
+        """
+        # 將角度轉換為弧度
+        lat1_rad = math.radians(lat1)
+        lng1_rad = math.radians(lng1)
+        lat2_rad = math.radians(lat2)
+        lng2_rad = math.radians(lng2)
+        
+        # Haversine 公式
+        dlat = lat2_rad - lat1_rad
+        dlng = lng2_rad - lng1_rad
+        
+        a = (math.sin(dlat / 2) ** 2 + 
+             math.cos(lat1_rad) * math.cos(lat2_rad) * math.sin(dlng / 2) ** 2)
+        c = 2 * math.asin(math.sqrt(a))
+        
+        # 地球半徑（公里）
+        earth_radius = 6371
+        
+        return earth_radius * c
+    
+    def extract_location_from_query(self, query: str) -> Optional[Tuple[str, float, float]]:
+        """從查詢中提取地點資訊
+        
+        Args:
+            query: 使用者查詢
+            
+        Returns:
+            (city, latitude, longitude) 或 None
+        """
+        # 載入位置資料以查找提到的城市
+        try:
+            import json
+            from pathlib import Path
+            
+            base_path = Path(__file__).parent.parent.parent
+            locations_file = base_path / "output" / "fukui_enhanced_locations.json"
+            
+            if not locations_file.exists():
+                return None
+                
+            with open(locations_file, 'r', encoding='utf-8') as f:
+                locations_data = json.load(f)
+            
+            # 建立城市到座標的映射
+            city_coords = {}
+            for location in locations_data:
+                city = location.get('original_data', {}).get('city', '')
+                if city and city not in city_coords:
+                    # 優先使用 Google Maps 座標
+                    google_data = location.get('google_maps_data', {})
+                    geometry = google_data.get('geometry', {})
+                    if geometry and 'location' in geometry:
+                        try:
+                            lat = float(geometry['location']['lat'])
+                            lng = float(geometry['location']['lng'])
+                            city_coords[city] = (lat, lng)
+                        except (ValueError, TypeError):
+                            pass
+                    
+                    # 如果沒有 Google 座標，使用原始座標
+                    if city not in city_coords:
+                        original_data = location.get('original_data', {})
+                        lat = original_data.get('latitude')
+                        lng = original_data.get('longitude')
+                        if lat is not None and lng is not None:
+                            try:
+                                city_coords[city] = (float(lat), float(lng))
+                            except (ValueError, TypeError):
+                                pass
+            
+            # 檢查查詢中是否包含城市名稱
+            for city, (lat, lng) in city_coords.items():
+                if city in query:
+                    return city, lat, lng
+                    
+        except Exception as e:
+            self.logger.warning(f"提取位置資訊失敗: {e}")
+        
+        return None
+    
+    def search_similar_with_location(self, query: str, n_results: int = 5, 
+                                   same_city_weight: float = 2.0, 
+                                   distance_threshold_km: float = 20.0) -> List[Dict[str, Any]]:
+        """搜尋相似文件，考慮地理位置接近性
+        
+        Args:
+            query: 查詢字串
+            n_results: 返回結果數量
+            same_city_weight: 同城市加權係數
+            distance_threshold_km: 距離閾值（公里）
+            
+        Returns:
+            搜尋結果，按相關性和地理位置排序
+        """
+        try:
+            # 先進行一般的向量搜尋，獲取更多候選結果
+            initial_results = self.collection.query(
+                query_texts=[query],
+                n_results=min(n_results * 3, 20),  # 獲取更多候選結果
+                include=["documents", "metadatas", "distances"]
+            )
+            
+            # 嘗試從查詢中提取地點資訊
+            query_location = self.extract_location_from_query(query)
+            
+            formatted_results = []
+            for i in range(len(initial_results["documents"][0])):
+                result = {
+                    "content": initial_results["documents"][0][i],
+                    "metadata": initial_results["metadatas"][0][i],
+                    "distance": initial_results["distances"][0][i],
+                    "location_score": 0  # 地理位置得分
+                }
+                
+                # 計算地理位置得分
+                if query_location:
+                    query_city, query_lat, query_lng = query_location
+                    result_metadata = result["metadata"]
+                    
+                    # 檢查是否為同一城市
+                    result_city = result_metadata.get('city', '')
+                    if result_city == query_city:
+                        result["location_score"] = same_city_weight
+                    else:
+                        # 計算距離並給予距離評分
+                        try:
+                            # 嘗試從 metadata 中獲取座標
+                            result_lat = result_metadata.get('latitude')
+                            result_lng = result_metadata.get('longitude')
+                            
+                            if result_lat is not None and result_lng is not None:
+                                result_lat = float(result_lat)
+                                result_lng = float(result_lng)
+                                
+                                distance = self.calculate_distance(
+                                    query_lat, query_lng, result_lat, result_lng
+                                )
+                                
+                                # 距離越近，得分越高
+                                if distance <= distance_threshold_km:
+                                    result["location_score"] = max(0, (distance_threshold_km - distance) / distance_threshold_km)
+                                    
+                        except (ValueError, TypeError) as e:
+                            self.logger.debug(f"無法計算距離: {e}")
+                
+                formatted_results.append(result)
+            
+            # 根據組合得分排序（向量相似度 + 地理位置得分）
+            # 距離越小越相似，所以使用負值；位置得分越高越好
+            formatted_results.sort(key=lambda x: (-x["location_score"], x["distance"]))
+            
+            # 返回前 n_results 個結果
+            return formatted_results[:n_results]
+            
+        except Exception as e:
+            self.logger.error(f"地理位置搜尋失敗: {e}")
+            # 如果地理搜尋失敗，回退到一般搜尋
+            return self.search_similar(query, n_results)
     
     def parse_markdown_sections(self, content: str, source_type: str) -> List[Dict[str, Any]]:
         """解析 Markdown 內容為結構化資料
@@ -328,12 +501,13 @@ class ChromaDBManager:
             self.logger.error(f"搜尋失敗：{e}")
             return []
     
-    def ask_gpt(self, question: str, context_docs: List[Dict[str, Any]] = None) -> str:
+    def ask_gpt(self, question: str, context_docs: List[Dict[str, Any]] = None, use_location_aware_search: bool = True) -> str:
         """使用 GPT-4o-mini 回答問題
         
         Args:
             question: 問題
             context_docs: 上下文文件
+            use_location_aware_search: 是否使用地理位置感知搜尋
             
         Returns:
             GPT 回答
@@ -341,7 +515,10 @@ class ChromaDBManager:
         try:
             # 如果沒有提供上下文，先搜尋相關文件
             if not context_docs:
-                context_docs = self.search_similar(question, n_results=3)
+                if use_location_aware_search:
+                    context_docs = self.search_similar_with_location(question, n_results=3)
+                else:
+                    context_docs = self.search_similar(question, n_results=3)
             
             # 建立上下文字串
             context_text = "\n\n".join([
@@ -349,7 +526,7 @@ class ChromaDBManager:
                 for doc in context_docs
             ])
             
-            # 建立系統提示 - 專業導遊角色
+            # 建立系統提示 - 專業導遊角色，強調地理位置相近的推薦
             system_prompt = """You are an experienced and enthusiastic tour guide specializing in Fukui Prefecture, Japan. You have extensive knowledge about local attractions, shrines, temples, culture, and travel tips.
 
 Your responsibilities:
@@ -361,9 +538,17 @@ Your responsibilities:
 - Structure your responses clearly with headings, bullet points, and organized sections when appropriate
 - Provide specific recommendations and insider tips
 
+**IMPORTANT: Geographic Location Priority**
+When recommending attractions or places to visit:
+1. **PRIORITIZE locations in the same city/area** - Group recommendations by geographic proximity
+2. **Consider travel convenience** - Suggest locations that are close to each other for efficient sightseeing
+3. **Mention geographic relationships** - Clearly state when attractions are in the same city or nearby areas
+4. **Create logical travel routes** - When possible, suggest visiting nearby attractions together
+5. **Include distance/travel time information** - Help tourists understand the geographic context
+
 Always respond in English with enthusiasm and expertise, as if you're personally guiding tourists through Fukui Prefecture."""
             
-            # 建立使用者提示 - 更專業的格式
+            # 建立使用者提示 - 更專業的格式，強調地理位置
             user_prompt = f"""Based on the following tourism information about Fukui Prefecture, please provide a comprehensive and engaging response as a professional tour guide:
 
 【Tourism Information】
@@ -372,14 +557,28 @@ Always respond in English with enthusiasm and expertise, as if you're personally
 【Tourist Question】
 {question}
 
+**Geographic Context Instructions:**
+- Pay attention to the city/location information in each attraction's metadata
+- Group and prioritize recommendations by geographic proximity (same city or nearby areas)
+- When suggesting multiple attractions, organize them geographically for efficient travel planning
+- Mention which attractions are in the same city or area for convenient joint visits
+
 Please structure your response professionally with:
 1. A welcoming introduction if appropriate
-2. Detailed information organized by key points
-3. Practical travel tips and recommendations
+2. Detailed information organized by geographic areas/cities when possible
+3. Practical travel tips and recommendations including geographic convenience
 4. Cultural or historical insights
 5. Best times to visit or special considerations
+6. Geographic groupings of nearby attractions for efficient sightseeing
 
-Make it informative, engaging, and helpful for tourists planning their visit to Fukui Prefecture:"""
+Format your response using proper Markdown formatting including:
+- Use **bold text** for important points and attraction names
+- Use bullet points (- or *) for lists and key features  
+- Use ## for main section headings when organizing content (consider geographic groupings)
+- Use ### for sub-sections if needed
+- Use > for special tips or quotes about travel convenience
+
+Make it informative, engaging, and helpful for tourists planning their visit to Fukui Prefecture with efficient geographic routing:"""
 
             # 呼叫 GPT-4o-mini 具有更自然的參數設定
             response = self.openai_client.chat.completions.create(

@@ -228,8 +228,8 @@ async def chat(request: ChatRequest):
         raise HTTPException(status_code=503, detail="ChromaDB 管理器未初始化")
     
     try:
-        # 搜尋相關文件
-        relevant_docs = chroma_manager.search_similar(request.message, n_results=3)
+        # 搜尋相關文件 - 使用地理位置感知搜尋
+        relevant_docs = chroma_manager.search_similar_with_location(request.message, n_results=3)
         
         if not relevant_docs:
             return ChatResponse(
@@ -238,10 +238,11 @@ async def chat(request: ChatRequest):
                 success=True
             )
         
-        # 使用 GPT 生成專業導遊式回答
+        # 使用 GPT 生成專業導遊式回答 - 啟用地理位置感知
         answer = chroma_manager.ask_gpt(
             f"As a professional tour guide, please help with this question: {request.message}", 
-            relevant_docs
+            relevant_docs,
+            use_location_aware_search=False  # 已經使用地理位置搜尋了，這裡不需要再次搜尋
         )
         
         # 準備來源資訊

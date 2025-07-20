@@ -1117,3 +1117,38 @@
 2025-07-21 00:06:40,108 - INFO - GPT 回答生成成功，問題：As a professional tour guide, please help with thi...
 2025-07-21 00:08:22,316 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
 2025-07-21 00:08:23,967 - INFO - GPT 回答生成成功，問題：As a professional tour guide, please help with thi...
+2025-07-21 00:21:07,813 - INFO - 環境變數載入成功
+2025-07-21 00:21:07,872 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-21 00:21:07,965 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-21 00:21:07,987 - INFO - OpenAI 客戶端初始化成功
+2025-07-21 00:33:04,661 - INFO - Backing off send_request(...) for 0.5s (requests.exceptions.ConnectionError: ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer')))
+2025-07-21 00:33:16,568 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-21 00:33:16,584 - INFO - GPT 回答生成成功，問題：As a professional tour guide, please help with thi...
+2025-07-21 00:33:52,839 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-21 00:33:52,843 - INFO - GPT 回答生成成功，問題：As a professional tour guide, please help with thi...
+2025-07-21 00:34:16,074 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-21 00:34:16,077 - INFO - GPT 回答生成成功，問題：As a professional tour guide, please help with thi...
+2025-07-21 00:43:18,863 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-21 00:43:18,870 - INFO - GPT 回答生成成功，問題：As a professional tour guide, please help with thi...
+2025-07-21 00:46:14,469 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-21 00:46:14,474 - INFO - GPT 回答生成成功，問題：As a professional tour guide, please help with thi...
+2025-07-21 01:11:37,563 - INFO - 環境變數載入成功
+2025-07-21 01:11:37,649 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-21 01:11:37,741 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-21 01:11:37,763 - INFO - OpenAI 客戶端初始化成功
+2025-07-21 01:13:22,408 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-21 01:13:22,424 - INFO - GPT 回答生成成功，問題：As a professional tour guide, please help with thi...
+2025-07-21 01:15:02,429 - INFO - 環境變數載入成功
+2025-07-21 01:15:02,535 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-21 01:15:02,585 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-21 01:15:02,609 - INFO - OpenAI 客戶端初始化成功
+2025-07-21 01:15:36,591 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-21 01:15:36,601 - INFO - GPT 回答生成成功，問題：As a professional tour guide, please help with thi...
+2025-07-21 01:16:55,085 - INFO - 環境變數載入成功
+2025-07-21 01:16:55,145 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-21 01:16:55,178 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-21 01:16:55,199 - INFO - OpenAI 客戶端初始化成功
+2025-07-21 01:17:08,417 - INFO - 環境變數載入成功
+2025-07-21 01:17:08,472 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-21 01:17:08,507 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-21 01:17:08,526 - INFO - OpenAI 客戶端初始化成功

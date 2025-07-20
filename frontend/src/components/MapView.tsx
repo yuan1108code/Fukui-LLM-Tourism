@@ -1,7 +1,7 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import { MapPin, Info, Navigation, Layers } from 'lucide-react';
+import { MapPin, Info, Navigation, Layers, UserCheck } from 'lucide-react';
 import { LocationData } from '../services/api';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -12,6 +12,16 @@ L.Icon.Default.mergeOptions({
   iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
   iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+});
+
+// 建立用戶位置標記圖示
+const userLocationIcon = new L.Icon({
+  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
 });
 
 interface MapViewProps {
@@ -47,6 +57,72 @@ const MAP_STYLES = [
 const MapView: React.FC<MapViewProps> = ({ locations }) => {
   const [selectedLocation, setSelectedLocation] = useState<LocationData | null>(null);
   const [currentMapStyle, setCurrentMapStyle] = useState(0);
+  const [userLocation, setUserLocation] = useState<{lat: number, lng: number} | null>(null);
+
+  // 獲取用戶位置
+  const getUserLocation = () => {
+    return new Promise<{lat: number, lng: number}>((resolve, reject) => {
+      if (!navigator.geolocation) {
+        reject(new Error('瀏覽器不支援地理位置服務'));
+        return;
+      }
+
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const location = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+          setUserLocation(location);
+          resolve(location);
+        },
+        (error) => {
+          console.warn('無法獲取用戶位置:', error.message);
+          reject(error);
+        },
+        {
+          enableHighAccuracy: true,
+          timeout: 10000,
+          maximumAge: 300000 // 5分鐘快取
+        }
+      );
+    });
+  };
+
+  // 建立 Google Maps 導航 URL
+  const createGoogleMapsUrl = async (destination: {lat: number, lng: number}) => {
+    try {
+      let origin = '';
+      
+      // 嘗試獲取用戶位置
+      if (!userLocation) {
+        try {
+          const location = await getUserLocation();
+          origin = `${location.lat},${location.lng}`;
+        } catch (error) {
+          console.warn('使用用戶位置失敗，將使用瀏覽器預設位置');
+        }
+      } else {
+        origin = `${userLocation.lat},${userLocation.lng}`;
+      }
+
+      // 建立 Google Maps URL
+      const baseUrl = 'https://www.google.com/maps/dir/';
+      const params = new URLSearchParams();
+      params.set('api', '1');
+      params.set('destination', `${destination.lat},${destination.lng}`);
+      
+      if (origin) {
+        params.set('origin', origin);
+        params.set('travelmode', 'driving'); // 預設為開車路線
+      }
+
+      return `${baseUrl}?${params.toString()}`;
+    } catch (error) {
+      // 如果獲取用戶位置失敗，就只用目的地
+      return `https://www.google.com/maps/dir/?api=1&destination=${destination.lat},${destination.lng}`;
+    }
+  };
 
   // Ensure locations with valid coordinates
   const validLocations = useMemo(() => 
@@ -60,6 +136,13 @@ const MapView: React.FC<MapViewProps> = ({ locations }) => {
   );
 
   const currentStyle = MAP_STYLES[currentMapStyle];
+
+  // 初始時嘗試獲取用戶位置
+  useEffect(() => {
+    getUserLocation().catch(() => {
+      console.log('無法獲取用戶位置，將僅顯示景點');
+    });
+  }, []);
 
   const handleMarkerClick = (location: LocationData) => {
     setSelectedLocation(location);
@@ -87,7 +170,21 @@ const MapView: React.FC<MapViewProps> = ({ locations }) => {
         </button>
       </motion.div>
 
-      {/* Map info panel */}
+      {/* User location button */}
+      <motion.div 
+        className="absolute top-4 left-20 z-[1000] bg-white rounded-lg shadow-lg"
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        <button
+          onClick={() => getUserLocation().catch(() => alert('無法獲取您的位置，請檢查瀏覽器權限設定'))}
+          className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors"
+          title="獲取我的位置"
+        >
+          <UserCheck className="w-4 h-4" />
+          {userLocation ? '位置已獲取' : '獲取我的位置'}
+        </button>
+      </motion.div>
       <motion.div 
         className="absolute top-4 right-4 z-[1000] bg-white rounded-lg shadow-lg px-4 py-2"
         initial={{ opacity: 0, x: 20 }}
@@ -112,6 +209,25 @@ const MapView: React.FC<MapViewProps> = ({ locations }) => {
             url={currentStyle.url}
             attribution={currentStyle.attribution}
           />
+
+          {/* User location marker */}
+          {userLocation && (
+            <Marker
+              position={[userLocation.lat, userLocation.lng]}
+              icon={userLocationIcon}
+            >
+              <Popup>
+                <div className="max-w-xs">
+                  <h3 className="font-bold text-lg mb-2 text-blue-600">
+                    您的位置
+                  </h3>
+                  <p className="text-sm text-gray-600">
+                    座標: {userLocation.lat.toFixed(6)}, {userLocation.lng.toFixed(6)}
+                  </p>
+                </div>
+              </Popup>
+            </Marker>
+          )}
 
           {/* Location markers */}
           {validLocations.map((location) => (
@@ -152,9 +268,12 @@ const MapView: React.FC<MapViewProps> = ({ locations }) => {
                     <div className="flex gap-2 mt-3">
                       <button
                         className="flex-1 bg-blue-500 hover:bg-blue-600 text-white text-xs px-3 py-1.5 rounded transition-colors"
-                        onClick={() => {
-                          // Open Google Maps navigation
-                          const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=\${location.coordinates!.lat},\${location.coordinates!.lng}`;
+                        onClick={async () => {
+                          // Open Google Maps navigation with route planning
+                          const googleMapsUrl = await createGoogleMapsUrl({
+                            lat: location.coordinates!.lat,
+                            lng: location.coordinates!.lng
+                          });
                           window.open(googleMapsUrl, '_blank');
                         }}
                       >
@@ -239,8 +358,11 @@ const MapView: React.FC<MapViewProps> = ({ locations }) => {
               <div className="space-y-2 mt-6">
                 <button
                   className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg transition-colors flex items-center justify-center gap-2"
-                  onClick={() => {
-                    const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=\${selectedLocation.coordinates!.lat},\${selectedLocation.coordinates!.lng}`;
+                  onClick={async () => {
+                    const googleMapsUrl = await createGoogleMapsUrl({
+                      lat: selectedLocation.coordinates!.lat,
+                      lng: selectedLocation.coordinates!.lng
+                    });
                     window.open(googleMapsUrl, '_blank');
                   }}
                 >
@@ -252,7 +374,7 @@ const MapView: React.FC<MapViewProps> = ({ locations }) => {
                   className="w-full bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg transition-colors flex items-center justify-center gap-2"
                   onClick={() => {
                     // Copy coordinates to clipboard
-                    navigator.clipboard.writeText(`\${selectedLocation.coordinates!.lat},\${selectedLocation.coordinates!.lng}`);
+                    navigator.clipboard.writeText(`${selectedLocation.coordinates!.lat},${selectedLocation.coordinates!.lng}`);
                     alert('Coordinates copied to clipboard!');
                   }}
                 >
