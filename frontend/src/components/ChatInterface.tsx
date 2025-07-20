@@ -79,18 +79,17 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ messages, onSendMessage, 
       transition={{ duration: 0.3, ease: 'easeOut' }}
       className={`flex ${message.isUser ? 'justify-end' : 'justify-start'} mb-4`}
     >
-      <div className={`flex items-start space-x-3 max-w-[80%] ${message.isUser ? 'flex-row-reverse space-x-reverse' : ''}`}>
+      <div className={`flex items-start space-x-3 max-w-[85%] ${message.isUser ? 'flex-row-reverse space-x-reverse' : ''}`}>
         {/* Avatar */}
-        <motion.div
-          className={`w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-medium ${
+        <div
+          className={`w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-medium flex-shrink-0 ${
             message.isUser 
               ? 'bg-gradient-to-br from-blue-500 to-purple-600' 
               : 'bg-gradient-to-br from-red-500 to-pink-500'
           }`}
-          whileHover={{ scale: 1.1 }}
         >
-          {message.isUser ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
-        </motion.div>
+          {message.isUser ? <User className="w-5 h-5" /> : <Bot className="w-5 h-5" />}
+        </div>
 
         {/* Message content */}
         <div className={`rounded-2xl px-4 py-3 shadow-sm ${
@@ -171,10 +170,17 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ messages, onSendMessage, 
           <div className={`text-xs mt-2 ${
             message.isUser ? 'text-blue-100' : 'text-gray-400'
           }`}>
-            {message.timestamp.toLocaleTimeString('en-US', { 
-              hour: '2-digit', 
-              minute: '2-digit' 
-            })}
+            <span>
+              {message.timestamp.toLocaleTimeString('en-US', { 
+                hour: '2-digit', 
+                minute: '2-digit' 
+              })}
+            </span>
+            {!message.isUser && message.responseTime && (
+              <span className="ml-2">
+                • Response time: {message.responseTime}s
+              </span>
+            )}
           </div>
         </div>
       </div>
@@ -202,7 +208,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ messages, onSendMessage, 
       >
         <form onSubmit={handleSubmit} className="flex items-end space-x-3">
           <div className="flex-1">
-            <motion.input
+            <input
               ref={inputRef}
               type="text"
               value={inputMessage}
@@ -214,7 +220,6 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ messages, onSendMessage, 
               className="w-full px-4 py-3 border border-gray-200 rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none"
               disabled={isLoading}
               maxLength={500}
-              whileFocus={{ scale: 1.02 }}
             />
             <div className="flex justify-between items-center mt-2">
               <span className="text-xs text-gray-400">

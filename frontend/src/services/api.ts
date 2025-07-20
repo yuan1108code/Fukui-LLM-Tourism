@@ -41,6 +41,7 @@ export interface ChatMessage {
   isUser: boolean;
   timestamp: Date;
   sources?: SourceInfo[];
+  responseTime?: number; // 回覆時間（秒）
 }
 
 export interface SourceInfo {

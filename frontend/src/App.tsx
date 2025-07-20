@@ -72,7 +72,7 @@ const App: React.FC = () => {
 
   const addMessage = (text: string, isUser: boolean, sources?: any[]) => {
     const newMessage: ChatMessage = {
-      id: Date.now().toString(),
+      id: `${isUser ? 'user' : 'assistant'}-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
       text,
       isUser,
       timestamp: new Date(),
@@ -89,40 +89,58 @@ const App: React.FC = () => {
     // Add user message
     addMessage(message, true);
 
-    // Add loading indicator
-    const loadingMessageId = Date.now().toString();
+    // 記錄開始時間
+    const startTime = Date.now();
+
+    // Add loading indicator with unique ID
+    const loadingMessageId = `loading-${Date.now()}`;
+    const loadingMessage: ChatMessage = {
+      id: loadingMessageId,
+      text: '',
+      isUser: false,
+      timestamp: new Date(),
+    };
+    
     setState(prev => ({
       ...prev,
-      messages: [
-        ...prev.messages,
-        {
-          id: loadingMessageId,
-          text: '',
-          isUser: false,
-          timestamp: new Date(),
-        },
-      ],
+      messages: [...prev.messages, loadingMessage],
     }));
 
     try {
       const response = await apiService.sendMessage(message, true);
       
-      // Remove loading indicator and add response
+      // 計算回覆時間
+      const endTime = Date.now();
+      const responseTimeSeconds = Math.round((endTime - startTime) / 1000);
+      
+      // Replace loading indicator with actual response
       setState(prev => ({
         ...prev,
-        messages: prev.messages.filter(msg => msg.id !== loadingMessageId),
+        messages: prev.messages.map(msg => 
+          msg.id === loadingMessageId 
+            ? {
+                ...msg,
+                text: response.answer,
+                sources: response.sources,
+                responseTime: responseTimeSeconds,
+              }
+            : msg
+        ),
       }));
-      
-      addMessage(response.answer, false, response.sources);
       
     } catch (error: any) {
-      // Remove loading indicator and add error message
+      // Replace loading indicator with error message
       setState(prev => ({
         ...prev,
-        messages: prev.messages.filter(msg => msg.id !== loadingMessageId),
+        messages: prev.messages.map(msg =>
+          msg.id === loadingMessageId
+            ? {
+                ...msg,
+                text: `Sorry, an error occurred while processing your request: ${error.message}`,
+              }
+            : msg
+        ),
       }));
-      
-      addMessage(`Sorry, an error occurred while processing your request: ${error.message}`, false);
     }
   };
 
