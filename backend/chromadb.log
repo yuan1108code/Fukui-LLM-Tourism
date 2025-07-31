@@ -1161,3 +1161,1013 @@
 2025-07-21 01:34:18,345 - INFO - GPT 回答生成成功，問題：As a professional tour guide, please help with thi...
 2025-07-21 01:34:31,167 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
 2025-07-21 01:34:31,170 - INFO - GPT 回答生成成功，問題：As a professional tour guide, please help with thi...
+2025-07-21 02:30:30,907 - INFO - 環境變數載入成功
+2025-07-21 02:30:30,966 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-21 02:30:31,057 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-21 02:30:31,079 - INFO - OpenAI 客戶端初始化成功
+2025-07-21 02:31:10,349 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-21 02:31:10,357 - INFO - GPT 回答生成成功，問題：As a professional tour guide, please help with thi...
+2025-07-21 02:45:21,825 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-21 02:45:21,834 - INFO - GPT 回答生成成功，問題：As a professional tour guide, please help with thi...
+2025-07-21 02:49:46,799 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-21 02:49:46,804 - INFO - GPT 回答生成成功，問題：As a professional tour guide, please help with thi...
+2025-07-21 02:51:00,063 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-21 02:51:00,068 - INFO - GPT 回答生成成功，問題：As a professional tour guide, please help with thi...
+2025-07-21 02:52:30,338 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-21 02:52:30,345 - INFO - GPT 回答生成成功，問題：As a professional tour guide, please help with thi...
+2025-07-21 02:55:49,099 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-21 02:55:49,105 - INFO - GPT 回答生成成功，問題：As a professional tour guide, please help with thi...
+2025-07-21 02:56:00,491 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-21 02:56:00,495 - INFO - GPT 回答生成成功，問題：As a professional tour guide, please help with thi...
+2025-07-21 02:56:19,139 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-21 02:56:19,154 - INFO - GPT 回答生成成功，問題：As a professional tour guide, please help with thi...
+2025-07-21 03:10:19,558 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-21 03:10:19,560 - INFO - GPT 回答生成成功，問題：As a professional tour guide, please help with thi...
+2025-07-21 03:10:37,875 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-21 03:10:37,882 - INFO - GPT 回答生成成功，問題：As a professional tour guide, please help with thi...
+2025-07-25 13:27:48,487 - INFO - 環境變數載入成功
+2025-07-25 13:27:49,672 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:27:50,115 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:27:50,128 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:27:57,069 - INFO - 環境變數載入成功
+2025-07-25 13:27:57,117 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:27:57,164 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:27:57,180 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:28:02,697 - INFO - 環境變數載入成功
+2025-07-25 13:28:02,738 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:28:02,772 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:28:02,781 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:28:09,188 - INFO - 環境變數載入成功
+2025-07-25 13:28:09,223 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:28:09,254 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:28:09,262 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:28:13,916 - INFO - 環境變數載入成功
+2025-07-25 13:28:13,951 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:28:13,982 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:28:13,989 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:28:18,766 - INFO - 環境變數載入成功
+2025-07-25 13:28:18,802 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:28:18,833 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:28:18,840 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:28:29,923 - INFO - 環境變數載入成功
+2025-07-25 13:28:29,960 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:28:29,991 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:28:29,999 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:28:33,130 - INFO - 環境變數載入成功
+2025-07-25 13:28:33,166 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:28:33,200 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:28:33,208 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:28:54,299 - INFO - 環境變數載入成功
+2025-07-25 13:28:54,334 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:28:54,368 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:28:54,376 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:28:59,183 - INFO - 環境變數載入成功
+2025-07-25 13:28:59,222 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:28:59,257 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:28:59,267 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:29:02,723 - INFO - 環境變數載入成功
+2025-07-25 13:29:02,761 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:29:02,794 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:29:02,801 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:30:58,904 - INFO - 環境變數載入成功
+2025-07-25 13:30:59,024 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:30:59,149 - ERROR - ChromaDB 初始化失敗：'_type'
+2025-07-25 13:31:01,464 - INFO - 環境變數載入成功
+2025-07-25 13:31:01,501 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:31:01,569 - ERROR - ChromaDB 初始化失敗：'_type'
+2025-07-25 13:31:03,473 - INFO - 環境變數載入成功
+2025-07-25 13:31:03,510 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:31:03,574 - ERROR - ChromaDB 初始化失敗：'_type'
+2025-07-25 13:34:06,746 - INFO - 環境變數載入成功
+2025-07-25 13:34:06,802 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:34:06,860 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:34:06,868 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:34:10,235 - INFO - 環境變數載入成功
+2025-07-25 13:34:10,271 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:34:10,302 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:34:10,309 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:34:20,043 - INFO - 環境變數載入成功
+2025-07-25 13:34:20,078 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:34:20,108 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:34:20,115 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:34:24,563 - INFO - 環境變數載入成功
+2025-07-25 13:34:24,602 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:34:24,634 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:34:24,642 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:34:28,147 - INFO - 環境變數載入成功
+2025-07-25 13:34:28,183 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:34:28,242 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:34:28,255 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:34:31,771 - INFO - 環境變數載入成功
+2025-07-25 13:34:31,815 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:34:31,847 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:34:31,854 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:34:35,020 - INFO - 環境變數載入成功
+2025-07-25 13:34:35,057 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:34:35,087 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:34:35,096 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:34:43,478 - INFO - 環境變數載入成功
+2025-07-25 13:34:43,516 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:34:43,547 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:34:43,555 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:34:50,705 - INFO - 環境變數載入成功
+2025-07-25 13:34:50,750 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:34:50,783 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:34:50,792 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:34:53,848 - INFO - 環境變數載入成功
+2025-07-25 13:34:53,886 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:34:53,918 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:34:53,927 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:37:38,909 - INFO - 環境變數載入成功
+2025-07-25 13:37:38,976 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:37:39,059 - ERROR - ChromaDB 初始化失敗：'_type'
+2025-07-25 13:37:42,747 - INFO - 環境變數載入成功
+2025-07-25 13:37:42,791 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:37:42,858 - ERROR - ChromaDB 初始化失敗：'_type'
+2025-07-25 13:38:00,832 - INFO - 環境變數載入成功
+2025-07-25 13:38:00,868 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:38:00,932 - ERROR - ChromaDB 初始化失敗：'_type'
+2025-07-25 13:38:05,712 - INFO - 環境變數載入成功
+2025-07-25 13:38:05,749 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:38:05,816 - ERROR - ChromaDB 初始化失敗：'_type'
+2025-07-25 13:38:09,580 - INFO - 環境變數載入成功
+2025-07-25 13:38:09,617 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:38:09,682 - ERROR - ChromaDB 初始化失敗：'_type'
+2025-07-25 13:38:11,977 - INFO - 環境變數載入成功
+2025-07-25 13:38:12,014 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:38:12,078 - ERROR - ChromaDB 初始化失敗：'_type'
+2025-07-25 13:38:14,750 - INFO - 環境變數載入成功
+2025-07-25 13:38:14,787 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:38:14,853 - ERROR - ChromaDB 初始化失敗：'_type'
+2025-07-25 13:38:18,086 - INFO - 環境變數載入成功
+2025-07-25 13:38:18,163 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:38:18,258 - ERROR - ChromaDB 初始化失敗：'_type'
+2025-07-25 13:38:20,642 - INFO - 環境變數載入成功
+2025-07-25 13:38:20,679 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:38:20,740 - ERROR - ChromaDB 初始化失敗：'_type'
+2025-07-25 13:38:23,574 - INFO - 環境變數載入成功
+2025-07-25 13:38:23,610 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:38:23,674 - ERROR - ChromaDB 初始化失敗：'_type'
+2025-07-25 13:38:26,482 - INFO - 環境變數載入成功
+2025-07-25 13:38:26,549 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:38:26,687 - ERROR - ChromaDB 初始化失敗：'_type'
+2025-07-25 13:38:29,306 - INFO - 環境變數載入成功
+2025-07-25 13:38:29,345 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:38:29,411 - ERROR - ChromaDB 初始化失敗：'_type'
+2025-07-25 13:38:34,021 - INFO - 環境變數載入成功
+2025-07-25 13:38:34,063 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:38:34,131 - ERROR - ChromaDB 初始化失敗：'_type'
+2025-07-25 13:38:39,716 - INFO - 環境變數載入成功
+2025-07-25 13:38:39,755 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:38:39,820 - ERROR - ChromaDB 初始化失敗：'_type'
+2025-07-25 13:38:42,758 - INFO - 環境變數載入成功
+2025-07-25 13:38:42,798 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:38:42,863 - ERROR - ChromaDB 初始化失敗：'_type'
+2025-07-25 13:38:46,463 - INFO - 環境變數載入成功
+2025-07-25 13:38:46,501 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:38:46,567 - ERROR - ChromaDB 初始化失敗：'_type'
+2025-07-25 13:38:49,234 - INFO - 環境變數載入成功
+2025-07-25 13:38:49,272 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:38:49,336 - ERROR - ChromaDB 初始化失敗：'_type'
+2025-07-25 13:38:53,320 - INFO - 環境變數載入成功
+2025-07-25 13:38:53,360 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:38:53,425 - ERROR - ChromaDB 初始化失敗：'_type'
+2025-07-25 13:38:55,686 - INFO - 環境變數載入成功
+2025-07-25 13:38:55,725 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:38:55,791 - ERROR - ChromaDB 初始化失敗：'_type'
+2025-07-25 13:38:58,108 - INFO - 環境變數載入成功
+2025-07-25 13:38:58,146 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:38:58,212 - ERROR - ChromaDB 初始化失敗：'_type'
+2025-07-25 13:39:00,098 - INFO - 環境變數載入成功
+2025-07-25 13:39:00,136 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:39:00,202 - ERROR - ChromaDB 初始化失敗：'_type'
+2025-07-25 13:40:27,930 - INFO - 環境變數載入成功
+2025-07-25 13:40:27,988 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:40:28,072 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:40:28,082 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:40:31,195 - INFO - 環境變數載入成功
+2025-07-25 13:40:31,233 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:40:31,265 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:40:31,273 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:40:37,057 - INFO - 環境變數載入成功
+2025-07-25 13:40:37,100 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:40:37,137 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:40:37,147 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:40:39,947 - INFO - 環境變數載入成功
+2025-07-25 13:40:39,993 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:40:40,026 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:40:40,033 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:40:47,213 - INFO - 環境變數載入成功
+2025-07-25 13:40:47,252 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:40:47,285 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:40:47,294 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:40:50,087 - INFO - 環境變數載入成功
+2025-07-25 13:40:50,128 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:40:50,159 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:40:50,167 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:40:53,045 - INFO - 環境變數載入成功
+2025-07-25 13:40:53,089 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:40:53,123 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:40:53,132 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:40:59,651 - INFO - 環境變數載入成功
+2025-07-25 13:40:59,693 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:40:59,724 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:40:59,731 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:41:14,293 - INFO - 環境變數載入成功
+2025-07-25 13:41:14,394 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:41:14,465 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:41:14,473 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:41:17,198 - INFO - 環境變數載入成功
+2025-07-25 13:41:17,237 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:41:17,269 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:41:17,277 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:41:19,593 - INFO - 環境變數載入成功
+2025-07-25 13:41:19,636 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:41:19,668 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:41:19,677 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:41:22,353 - INFO - 環境變數載入成功
+2025-07-25 13:41:22,395 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:41:22,427 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:41:22,436 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:41:25,349 - INFO - 環境變數載入成功
+2025-07-25 13:41:25,388 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:41:25,420 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:41:25,428 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:41:29,553 - INFO - 環境變數載入成功
+2025-07-25 13:41:29,598 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:41:29,638 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:41:29,653 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:41:33,392 - INFO - 環境變數載入成功
+2025-07-25 13:41:33,431 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:41:33,466 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:41:33,474 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:41:36,556 - INFO - 環境變數載入成功
+2025-07-25 13:41:36,599 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:41:36,637 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:41:36,645 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:44:44,460 - INFO - 環境變數載入成功
+2025-07-25 13:44:44,520 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:44:44,593 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:44:44,601 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:44:47,545 - INFO - 環境變數載入成功
+2025-07-25 13:44:47,586 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:44:47,618 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:44:47,626 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:44:51,132 - INFO - 環境變數載入成功
+2025-07-25 13:44:51,172 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:44:51,206 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:44:51,214 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:44:55,195 - INFO - 環境變數載入成功
+2025-07-25 13:44:55,236 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:44:55,268 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:44:55,277 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:44:59,046 - INFO - 環境變數載入成功
+2025-07-25 13:44:59,085 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:44:59,117 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:44:59,125 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:45:04,836 - INFO - 環境變數載入成功
+2025-07-25 13:45:04,877 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:45:04,910 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:45:04,918 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:45:11,989 - INFO - 環境變數載入成功
+2025-07-25 13:45:12,032 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:45:12,067 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:45:12,076 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:45:16,708 - INFO - 環境變數載入成功
+2025-07-25 13:45:16,761 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:45:16,816 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:45:16,830 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:45:20,317 - INFO - 環境變數載入成功
+2025-07-25 13:45:20,357 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:45:20,390 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:45:20,398 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:45:22,104 - INFO - 環境變數載入成功
+2025-07-25 13:45:22,142 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:45:22,175 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:45:22,183 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:45:24,868 - INFO - 環境變數載入成功
+2025-07-25 13:45:24,905 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:45:24,936 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:45:24,944 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:45:28,408 - INFO - 環境變數載入成功
+2025-07-25 13:45:28,458 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:45:28,578 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:45:28,591 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:45:34,379 - INFO - 環境變數載入成功
+2025-07-25 13:45:34,417 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:45:34,449 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:45:34,457 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 13:45:58,933 - INFO - 環境變數載入成功
+2025-07-25 13:45:58,992 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-25 13:45:59,065 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-25 13:45:59,073 - INFO - OpenAI 客戶端初始化成功
+2025-07-25 14:24:33,250 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-25 14:24:33,259 - INFO - GPT 回答生成成功，問題：As a professional tour guide, please help with thi...
+2025-07-25 14:27:13,267 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-25 14:27:13,277 - INFO - GPT 回答生成成功，問題：As a professional tour guide, please help with thi...
+2025-07-31 19:44:01,566 - INFO - 環境變數載入成功
+2025-07-31 19:44:01,656 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-31 19:44:01,758 - ERROR - ChromaDB 初始化失敗：'_type'
+2025-07-31 19:45:40,190 - INFO - 環境變數載入成功
+2025-07-31 19:45:40,190 - WARNING - 清理資料庫檔案時發生錯誤：name 'time' is not defined
+2025-07-31 19:45:40,304 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-31 19:45:40,389 - INFO - 成功載入現有集合：fukui_tourism
+2025-07-31 19:45:40,389 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-31 19:45:40,399 - INFO - OpenAI 客戶端初始化成功
+2025-07-31 19:46:40,926 - INFO - 環境變數載入成功
+2025-07-31 19:46:40,928 - INFO - 已備份可能損壞的資料庫檔案：chroma_db/chroma_backup_1753958800.sqlite3
+2025-07-31 19:46:40,928 - INFO - 已備份檔案：chroma_db/chroma_backup_1753958800_backup_1753958800.sqlite3
+2025-07-31 19:46:40,988 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-31 19:46:41,103 - INFO - 成功建立新集合：fukui_tourism
+2025-07-31 19:46:41,103 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-31 19:46:41,104 - ERROR - OpenAI 客戶端初始化失敗：Client.__init__() got an unexpected keyword argument 'proxies'
+2025-07-31 20:35:57,719 - INFO - 環境變數載入成功
+2025-07-31 20:35:57,721 - INFO - 已備份可能損壞的資料庫檔案：chroma_db/chroma_backup_1753961757.sqlite3
+2025-07-31 20:35:57,721 - INFO - 已備份檔案：chroma_db/chroma_backup_1753958800_backup_1753958800_backup_1753961757.sqlite3
+2025-07-31 20:35:57,721 - INFO - 已備份檔案：chroma_db/chroma_backup_1753961757_backup_1753961757.sqlite3
+2025-07-31 20:35:57,779 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-31 20:35:57,892 - INFO - 成功建立新集合：fukui_tourism
+2025-07-31 20:35:57,892 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-31 20:35:57,892 - ERROR - OpenAI 客戶端初始化失敗：Client.__init__() got an unexpected keyword argument 'proxies'
+2025-07-31 20:39:21,430 - INFO - 環境變數載入成功
+2025-07-31 20:39:21,432 - INFO - 已備份可能損壞的資料庫檔案：chroma_db/chroma_backup_1753961961.sqlite3
+2025-07-31 20:39:21,433 - INFO - 已備份檔案：chroma_db/chroma_backup_1753961961_backup_1753961961.sqlite3
+2025-07-31 20:39:21,433 - INFO - 已備份檔案：chroma_db/chroma_backup_1753958800_backup_1753958800_backup_1753961757_backup_1753961961.sqlite3
+2025-07-31 20:39:21,434 - INFO - 已備份檔案：chroma_db/chroma_backup_1753961757_backup_1753961757_backup_1753961961.sqlite3
+2025-07-31 20:39:21,576 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-31 20:39:21,776 - INFO - 成功建立新集合：fukui_tourism
+2025-07-31 20:39:21,776 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-31 20:39:21,776 - ERROR - OpenAI 客戶端初始化失敗：Client.__init__() got an unexpected keyword argument 'proxies'
+2025-07-31 20:43:44,776 - INFO - 環境變數載入成功
+2025-07-31 20:43:44,778 - INFO - 已備份可能損壞的資料庫檔案：chroma_db/chroma_backup_1753962224.sqlite3
+2025-07-31 20:43:44,778 - INFO - 已備份檔案：chroma_db/chroma_backup_1753961961_backup_1753961961_backup_1753962224.sqlite3
+2025-07-31 20:43:44,779 - INFO - 已備份檔案：chroma_db/chroma_backup_1753958800_backup_1753958800_backup_1753961757_backup_1753961961_backup_1753962224.sqlite3
+2025-07-31 20:43:44,779 - INFO - 已備份檔案：chroma_db/chroma_backup_1753962224_backup_1753962224.sqlite3
+2025-07-31 20:43:44,779 - INFO - 已備份檔案：chroma_db/chroma_backup_1753961757_backup_1753961757_backup_1753961961_backup_1753962224.sqlite3
+2025-07-31 20:43:44,842 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-31 20:43:44,966 - INFO - 成功建立新集合：fukui_tourism
+2025-07-31 20:43:44,966 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-31 20:43:44,966 - ERROR - OpenAI 客戶端初始化失敗：Client.__init__() got an unexpected keyword argument 'proxies'
+2025-07-31 20:44:55,419 - INFO - 環境變數載入成功
+2025-07-31 20:44:55,420 - INFO - 已備份可能損壞的資料庫檔案：chroma_db/chroma_backup_1753962295.sqlite3
+2025-07-31 20:44:55,420 - INFO - 已備份檔案：chroma_db/chroma_backup_1753961757_backup_1753961757_backup_1753961961_backup_1753962224_backup_1753962295.sqlite3
+2025-07-31 20:44:55,420 - INFO - 已備份檔案：chroma_db/chroma_backup_1753962224_backup_1753962224_backup_1753962295.sqlite3
+2025-07-31 20:44:55,420 - INFO - 已備份檔案：chroma_db/chroma_backup_1753958800_backup_1753958800_backup_1753961757_backup_1753961961_backup_1753962224_backup_1753962295.sqlite3
+2025-07-31 20:44:55,420 - INFO - 已備份檔案：chroma_db/chroma_backup_1753962295_backup_1753962295.sqlite3
+2025-07-31 20:44:55,420 - INFO - 已備份檔案：chroma_db/chroma_backup_1753961961_backup_1753961961_backup_1753962224_backup_1753962295.sqlite3
+2025-07-31 20:44:55,473 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-31 20:44:55,594 - INFO - 成功建立新集合：fukui_tourism
+2025-07-31 20:44:55,594 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-31 20:44:55,619 - INFO - OpenAI 客戶端初始化成功
+2025-07-31 20:44:55,623 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,623 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,623 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,623 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,623 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,623 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,623 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,623 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,623 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,624 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,624 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,624 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,624 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,625 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,625 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,625 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,625 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,625 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,625 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,625 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,625 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,625 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,625 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,625 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,626 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,626 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,626 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,626 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,626 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,626 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,626 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,626 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,626 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,626 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,626 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,626 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,626 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,626 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,626 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,626 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,626 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,627 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,627 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,627 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,627 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,627 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,627 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,627 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,627 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,627 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,627 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,627 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,627 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,627 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,627 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,627 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,627 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,627 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,628 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,628 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,628 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,628 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,628 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,628 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,628 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,628 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,628 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,628 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,628 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,628 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,628 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,628 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,628 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,628 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,628 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,629 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,629 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,629 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,629 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,629 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,629 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,629 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,629 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,629 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,629 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,629 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,630 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,630 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,630 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,630 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,630 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,630 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,630 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,631 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,631 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,631 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,631 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,631 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,631 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,631 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,631 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,631 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,631 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,631 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,631 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,631 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,631 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,631 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,631 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,631 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,632 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,632 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,632 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,632 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,632 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,632 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,632 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,632 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,632 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,632 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,632 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,632 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,632 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,632 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,632 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,632 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,633 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,633 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,633 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,633 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,633 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,633 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,633 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,633 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,633 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,633 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,633 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,633 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,633 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,633 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,634 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,634 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,634 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,634 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,634 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,634 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,635 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,635 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,635 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,636 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,636 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,636 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,636 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,636 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,636 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,636 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,636 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,636 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,636 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,636 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,636 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,636 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,637 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,637 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,637 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,637 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,637 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,637 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,637 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,637 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,637 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,637 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,637 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,637 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,637 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,637 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,637 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,637 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,637 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,638 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,638 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,638 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,638 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,638 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,638 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,638 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,638 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,638 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,638 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,638 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,638 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,638 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,638 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,638 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,639 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,639 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,639 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,639 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,639 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,639 - INFO - 成功解析 199 個景點
+2025-07-31 20:44:55,639 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,640 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,640 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,640 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,640 - WARNING - 基本資訊表格內容為空
+2025-07-31 20:44:55,640 - INFO - 成功解析 5 個神社
+2025-07-31 20:45:58,928 - INFO - 成功插入 204 個文件
+2025-07-31 20:51:47,244 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-31 20:51:47,258 - INFO - GPT 回答生成成功，問題：As a professional tour guide, please help with thi...
+2025-07-31 21:29:35,650 - INFO - 環境變數載入成功
+2025-07-31 21:29:35,651 - INFO - 已備份可能損壞的資料庫檔案：chroma_db/chroma_backup_1753964975.sqlite3
+2025-07-31 21:29:35,651 - INFO - 已備份檔案：chroma_db/chroma_backup_1753961961_backup_1753961961_backup_1753962224_backup_1753962295_backup_1753964975.sqlite3
+2025-07-31 21:29:35,652 - INFO - 已備份檔案：chroma_db/chroma_backup_1753962224_backup_1753962224_backup_1753962295_backup_1753964975.sqlite3
+2025-07-31 21:29:35,653 - INFO - 已備份檔案：chroma_db/chroma_backup_1753964975_backup_1753964975.sqlite3
+2025-07-31 21:29:35,653 - INFO - 已備份檔案：chroma_db/chroma_backup_1753961757_backup_1753961757_backup_1753961961_backup_1753962224_backup_1753962295_backup_1753964975.sqlite3
+2025-07-31 21:29:35,653 - INFO - 已備份檔案：chroma_db/chroma_backup_1753962295_backup_1753962295_backup_1753964975.sqlite3
+2025-07-31 21:29:35,654 - INFO - 已備份檔案：chroma_db/chroma_backup_1753958800_backup_1753958800_backup_1753961757_backup_1753961961_backup_1753962224_backup_1753962295_backup_1753964975.sqlite3
+2025-07-31 21:29:35,742 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-31 21:29:35,826 - INFO - 成功建立新集合：fukui_tourism
+2025-07-31 21:29:35,826 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-31 21:29:35,834 - INFO - OpenAI 客戶端初始化成功
+2025-07-31 21:29:35,841 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,842 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,842 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,842 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,842 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,842 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,842 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,842 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,842 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,842 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,842 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,842 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,843 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,843 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,843 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,843 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,843 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,843 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,843 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,843 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,843 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,843 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,843 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,844 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,844 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,844 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,844 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,844 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,844 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,844 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,844 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,844 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,844 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,844 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,844 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,844 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,844 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,844 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,845 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,845 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,845 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,845 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,845 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,845 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,845 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,845 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,845 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,845 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,845 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,845 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,846 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,846 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,846 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,846 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,846 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,846 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,846 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,846 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,846 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,846 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,846 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,846 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,846 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,846 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,847 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,847 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,847 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,847 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,848 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,848 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,848 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,848 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,848 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,849 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,849 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,849 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,849 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,849 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,849 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,849 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,849 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,849 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,849 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,849 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,849 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,849 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,850 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,850 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,850 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,850 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,850 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,850 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,850 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,850 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,850 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,850 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,850 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,850 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,850 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,850 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,850 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,851 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,851 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,851 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,851 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,851 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,851 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,851 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,851 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,852 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,852 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,852 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,852 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,852 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,852 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,852 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,852 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,853 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,853 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,853 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,853 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,853 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,853 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,853 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,853 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,853 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,853 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,853 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,853 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,853 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,853 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,853 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,854 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,854 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,854 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,854 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,854 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,854 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,854 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,854 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,854 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,854 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,854 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,854 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,854 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,854 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,854 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,855 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,855 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,855 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,855 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,855 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,855 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,855 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,855 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,855 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,855 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,855 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,855 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,855 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,855 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,855 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,855 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,856 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,856 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,856 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,856 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,856 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,856 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,856 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,856 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,856 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,856 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,857 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,857 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,857 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,857 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,857 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,857 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,857 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,858 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,858 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,858 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,858 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,858 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,858 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,858 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,858 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,858 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,858 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,858 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,858 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,858 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,858 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,858 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,859 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,859 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,859 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,859 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,859 - INFO - 成功解析 199 個景點
+2025-07-31 21:29:35,859 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,859 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,859 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,859 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,859 - WARNING - 基本資訊表格內容為空
+2025-07-31 21:29:35,860 - INFO - 成功解析 5 個神社
+2025-07-31 21:29:42,793 - INFO - 成功插入 204 個文件
+2025-07-31 21:40:03,969 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-31 21:40:03,996 - INFO - GPT 回答生成成功，問題：As a professional tour guide, please help with thi...
+2025-07-31 21:50:58,230 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-31 21:50:58,235 - INFO - GPT 回答生成成功，問題：As a professional tour guide, please help with thi...
+2025-07-31 22:04:00,010 - INFO - 環境變數載入成功
+2025-07-31 22:04:00,010 - INFO - 已備份可能損壞的資料庫檔案：chroma_db/chroma_backup_1753967040.sqlite3
+2025-07-31 22:04:00,010 - INFO - 已備份檔案：chroma_db/chroma_backup_1753961757_backup_1753961757_backup_1753961961_backup_1753962224_backup_1753962295_backup_1753964975_backup_1753967040.sqlite3
+2025-07-31 22:04:00,011 - INFO - 已備份檔案：chroma_db/chroma_backup_1753964975_backup_1753964975_backup_1753967040.sqlite3
+2025-07-31 22:04:00,011 - INFO - 已備份檔案：chroma_db/chroma_backup_1753962295_backup_1753962295_backup_1753964975_backup_1753967040.sqlite3
+2025-07-31 22:04:00,011 - INFO - 已備份檔案：chroma_db/chroma_backup_1753961961_backup_1753961961_backup_1753962224_backup_1753962295_backup_1753964975_backup_1753967040.sqlite3
+2025-07-31 22:04:00,011 - INFO - 已備份檔案：chroma_db/chroma_backup_1753962224_backup_1753962224_backup_1753962295_backup_1753964975_backup_1753967040.sqlite3
+2025-07-31 22:04:00,012 - INFO - 已備份檔案：chroma_db/chroma_backup_1753958800_backup_1753958800_backup_1753961757_backup_1753961961_backup_1753962224_backup_1753962295_backup_1753964975_backup_1753967040.sqlite3
+2025-07-31 22:04:00,012 - INFO - 已備份檔案：chroma_db/chroma_backup_1753967040_backup_1753967040.sqlite3
+2025-07-31 22:04:00,074 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-31 22:04:00,143 - INFO - 成功建立新集合：fukui_tourism
+2025-07-31 22:04:00,143 - INFO - ChromaDB 初始化成功，集合名稱：fukui_tourism
+2025-07-31 22:04:00,155 - INFO - OpenAI 客戶端初始化成功
+2025-07-31 22:04:00,160 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,161 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,161 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,161 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,161 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,161 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,161 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,161 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,161 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,162 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,162 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,162 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,162 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,162 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,162 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,162 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,162 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,162 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,162 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,162 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,163 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,163 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,163 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,163 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,163 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,163 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,163 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,163 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,163 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,163 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,163 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,163 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,163 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,163 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,163 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,164 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,164 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,164 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,164 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,164 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,164 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,164 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,164 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,164 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,164 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,164 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,164 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,164 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,164 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,165 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,165 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,165 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,165 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,165 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,165 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,165 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,165 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,165 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,165 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,165 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,165 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,165 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,165 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,166 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,166 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,166 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,166 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,166 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,166 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,166 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,166 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,166 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,166 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,166 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,166 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,166 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,166 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,166 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,167 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,167 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,167 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,167 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,167 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,167 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,167 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,167 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,167 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,167 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,167 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,167 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,167 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,168 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,168 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,168 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,168 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,168 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,168 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,168 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,168 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,168 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,168 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,168 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,168 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,168 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,168 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,168 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,169 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,169 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,169 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,169 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,169 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,169 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,169 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,169 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,169 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,169 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,169 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,169 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,170 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,170 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,170 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,170 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,170 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,170 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,170 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,170 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,170 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,171 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,171 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,171 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,171 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,171 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,171 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,171 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,171 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,171 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,171 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,171 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,171 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,171 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,172 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,172 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,172 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,172 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,172 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,172 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,172 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,172 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,172 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,172 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,172 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,172 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,172 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,172 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,172 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,173 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,173 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,173 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,173 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,173 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,173 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,173 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,173 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,173 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,173 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,173 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,173 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,173 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,173 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,173 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,173 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,173 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,174 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,174 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,174 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,174 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,174 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,174 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,174 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,174 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,174 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,174 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,174 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,174 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,174 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,174 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,175 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,175 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,175 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,175 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,175 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,175 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,175 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,175 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,175 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,175 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,176 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,176 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,176 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,176 - INFO - 成功解析 199 個景點
+2025-07-31 22:04:00,176 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,176 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,176 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,177 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,177 - WARNING - 基本資訊表格內容為空
+2025-07-31 22:04:00,177 - INFO - 成功解析 5 個神社
+2025-07-31 22:04:09,560 - INFO - 成功插入 204 個文件

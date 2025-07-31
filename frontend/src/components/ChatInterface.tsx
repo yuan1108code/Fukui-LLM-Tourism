@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Send, User, Bot, ExternalLink } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
@@ -8,46 +8,24 @@ interface ChatInterfaceProps {
   messages: ChatMessage[];
   onSendMessage: (message: string) => void;
   isLoading: boolean;
+  inputText?: string;
+  onInputTextChange?: (text: string) => void;
 }
 
-const ChatInterface: React.FC<ChatInterfaceProps> = ({ messages, onSendMessage, isLoading }) => {
-  const [inputMessage, setInputMessage] = useState('');
-  const [isComposing, setIsComposing] = useState(false);
+// 分離出訊息顯示區域元件
+const MessagesArea = memo(({ messages }: { messages: ChatMessage[] }) => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
 
   // Auto-scroll to latest message
-  const scrollToBottom = () => {
+  const scrollToBottom = useCallback(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
+  }, []);
 
   useEffect(() => {
     scrollToBottom();
-  }, [messages]);
+  }, [messages, scrollToBottom]);
 
-  // Focus input field
-  useEffect(() => {
-    if (!isLoading) {
-      inputRef.current?.focus();
-    }
-  }, [isLoading]);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (inputMessage.trim() && !isLoading && !isComposing) {
-      onSendMessage(inputMessage.trim());
-      setInputMessage('');
-    }
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' && !e.shiftKey && !isComposing) {
-      e.preventDefault();
-      handleSubmit(e);
-    }
-  };
-
-  const LoadingDots = () => (
+  const LoadingDots = memo(() => (
     <motion.div 
       className="flex space-x-1"
       initial={{ opacity: 0 }}
@@ -70,9 +48,9 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ messages, onSendMessage, 
         />
       ))}
     </motion.div>
-  );
+  ));
 
-  const MessageBubble = ({ message }: { message: ChatMessage }) => (
+  const MessageBubble = memo(({ message }: { message: ChatMessage }) => (
     <motion.div
       initial={{ opacity: 0, y: 20, scale: 0.8 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -185,65 +163,167 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ messages, onSendMessage, 
         </div>
       </div>
     </motion.div>
-  );
+  ), (prevProps, nextProps) => {
+    // 只有當 message 的關鍵屬性改變時才重新渲染
+    return (
+      prevProps.message.id === nextProps.message.id &&
+      prevProps.message.text === nextProps.message.text &&
+      prevProps.message.isUser === nextProps.message.isUser &&
+      JSON.stringify(prevProps.message.sources) === JSON.stringify(nextProps.message.sources)
+    );
+  });
 
   return (
-    <div className="flex flex-col h-full bg-gradient-to-b from-gray-50 to-white">
-      {/* Messages area */}
-      <div className="flex-1 overflow-y-auto px-4 py-6 space-y-4">
-        <AnimatePresence>
-          {messages.map((message) => (
-            <MessageBubble key={message.id} message={message} />
-          ))}
-        </AnimatePresence>
-        <div ref={messagesEndRef} />
-      </div>
-
-      {/* Input area */}
-      <motion.div 
-        className="border-t border-gray-200 bg-white/80 backdrop-blur-sm p-4"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3 }}
-      >
-        <form onSubmit={handleSubmit} className="flex items-end space-x-3">
-          <div className="flex-1">
-            <input
-              ref={inputRef}
-              type="text"
-              value={inputMessage}
-              onChange={(e) => setInputMessage(e.target.value)}
-              onKeyDown={handleKeyDown}
-              onCompositionStart={() => setIsComposing(true)}
-              onCompositionEnd={() => setIsComposing(false)}
-              placeholder="Ask about tourist attractions or shrines in Fukui Prefecture... (responses will be in English)"
-              className="w-full px-4 py-3 border border-gray-200 rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none"
-              disabled={isLoading}
-              maxLength={500}
-            />
-            <div className="flex justify-between items-center mt-2">
-              <span className="text-xs text-gray-400">
-                {inputMessage.length}/500
-              </span>
-              <span className="text-xs text-gray-400">
-                Enter to send, Shift+Enter for new line
-              </span>
-            </div>
-          </div>
-          
-          <motion.button
-            type="submit"
-            disabled={!inputMessage.trim() || isLoading || isComposing}
-            className="bg-gradient-to-br from-blue-500 to-purple-600 text-white p-3 rounded-xl hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Send className="w-5 h-5" />
-          </motion.button>
-        </form>
-      </motion.div>
+    <div className="flex-1 overflow-y-auto px-4 py-6 space-y-4">
+      <AnimatePresence>
+        {messages.map((message) => (
+          <MessageBubble key={message.id} message={message} />
+        ))}
+      </AnimatePresence>
+      <div ref={messagesEndRef} />
     </div>
   );
-};
+}, (prevProps, nextProps) => {
+  // 只有當 messages 陣列真正改變時才重新渲染
+  return (
+    prevProps.messages.length === nextProps.messages.length &&
+    prevProps.messages.every((msg, index) => 
+      msg.id === nextProps.messages[index]?.id &&
+      msg.text === nextProps.messages[index]?.text
+    )
+  );
+});
+
+// 分離出輸入區域元件
+const InputArea = memo(({ onSendMessage, isLoading, externalInputText, onInputTextChange }: { 
+  onSendMessage: (message: string) => void;
+  isLoading: boolean;
+  externalInputText?: string;
+  onInputTextChange?: (text: string) => void;
+}) => {
+  const [inputMessage, setInputMessage] = useState('');
+  const [isComposing, setIsComposing] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  // Sync with external input text
+  useEffect(() => {
+    if (externalInputText !== undefined) {
+      setInputMessage(externalInputText);
+    }
+  }, [externalInputText]);
+
+  // Focus input field
+  useEffect(() => {
+    if (!isLoading) {
+      inputRef.current?.focus();
+    }
+  }, [isLoading]);
+
+  const handleSubmit = useCallback((e: React.FormEvent) => {
+    e.preventDefault();
+    if (inputMessage.trim() && !isLoading && !isComposing) {
+      onSendMessage(inputMessage.trim());
+      setInputMessage('');
+    }
+  }, [inputMessage, isLoading, isComposing, onSendMessage]);
+
+  const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && !e.shiftKey && !isComposing) {
+      e.preventDefault();
+      handleSubmit(e);
+    }
+  }, [isComposing, handleSubmit]);
+
+  const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = e.target.value;
+    setInputMessage(newValue);
+    // Notify parent component about the change
+    onInputTextChange?.(newValue);
+  }, [onInputTextChange]);
+
+  const handleCompositionStart = useCallback(() => {
+    setIsComposing(true);
+  }, []);
+
+  const handleCompositionEnd = useCallback(() => {
+    setIsComposing(false);
+  }, []);
+
+  return (
+    <motion.div 
+      className="border-t border-gray-200 bg-white/80 backdrop-blur-sm p-4"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3 }}
+    >
+      <form onSubmit={handleSubmit} className="flex items-end space-x-3">
+        <div className="flex-1">
+          <input
+            ref={inputRef}
+            type="text"
+            value={inputMessage}
+            onChange={handleInputChange}
+            onKeyDown={handleKeyDown}
+            onCompositionStart={handleCompositionStart}
+            onCompositionEnd={handleCompositionEnd}
+            placeholder="Ask about tourist attractions or shrines in Fukui Prefecture... (responses will be in English)"
+            className="w-full px-4 py-3 border border-gray-200 rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none"
+            disabled={isLoading}
+            maxLength={500}
+          />
+          <div className="flex justify-between items-center mt-2">
+            <span className="text-xs text-gray-400">
+              {inputMessage.length}/500
+            </span>
+            <span className="text-xs text-gray-400">
+              Enter to send, Shift+Enter for new line
+            </span>
+          </div>
+        </div>
+        
+        <motion.button
+          type="submit"
+          disabled={!inputMessage.trim() || isLoading || isComposing}
+          className="bg-gradient-to-br from-blue-500 to-purple-600 text-white p-3 rounded-xl hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <Send className="w-5 h-5" />
+        </motion.button>
+      </form>
+    </motion.div>
+  );
+}, (prevProps, nextProps) => {
+  // 只有當 onSendMessage、isLoading、externalInputText 或 onInputTextChange 改變時才重新渲染
+  return prevProps.isLoading === nextProps.isLoading && 
+         prevProps.onSendMessage === nextProps.onSendMessage &&
+         prevProps.externalInputText === nextProps.externalInputText &&
+         prevProps.onInputTextChange === nextProps.onInputTextChange;
+});
+
+const ChatInterface: React.FC<ChatInterfaceProps> = memo(({ 
+  messages, 
+  onSendMessage, 
+  isLoading, 
+  inputText, 
+  onInputTextChange 
+}) => {
+  return (
+    <div className="flex flex-col h-full bg-gradient-to-b from-gray-50 to-white">
+      {/* Messages area - 現在是獨立元件，不會因為輸入變化而重新渲染 */}
+      <MessagesArea messages={messages} />
+      
+      {/* Input area - 獨立元件，只處理輸入邏輯 */}
+      <InputArea 
+        onSendMessage={onSendMessage} 
+        isLoading={isLoading}
+        externalInputText={inputText}
+        onInputTextChange={onInputTextChange}
+      />
+    </div>
+  );
+});
+
+ChatInterface.displayName = 'ChatInterface';
 
 export default ChatInterface;

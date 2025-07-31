@@ -48,6 +48,20 @@ export interface SourceInfo {
   title: string;
   type: string;
   content: string;
+  location_score?: number; // 地理位置相關性得分
+}
+
+export interface UserLocation {
+  latitude: number;
+  longitude: number;
+  accuracy?: number;
+}
+
+export interface ChatRequest {
+  message: string;
+  include_sources?: boolean;
+  user_location?: UserLocation;
+  timestamp?: string;
 }
 
 export interface LocationData {
@@ -87,13 +101,32 @@ export const apiService = {
     }
   },
 
-  // Send chat message
-  async sendMessage(message: string, includeSources: boolean = true): Promise<ChatResponse> {
+  // Send chat message with location and time awareness
+  async sendMessage(
+    message: string, 
+    includeSources: boolean = true,
+    userLocation?: UserLocation,
+    timestamp?: string
+  ): Promise<ChatResponse> {
     try {
-      const response = await api.post('/chat', {
+      const requestData: ChatRequest = {
         message,
         include_sources: includeSources,
-      });
+      };
+      
+      // 加入位置資訊（如果有的話）
+      if (userLocation) {
+        requestData.user_location = userLocation;
+      }
+      
+      // 加入時間資訊（如果有的話）
+      if (timestamp) {
+        requestData.timestamp = timestamp;
+      }
+      
+      console.log('Sending enhanced chat request:', requestData);
+      
+      const response = await api.post('/chat', requestData);
       return response.data;
     } catch (error: any) {
       if (error.response?.data) {
@@ -104,7 +137,7 @@ export const apiService = {
   },
 
   // Get location data
-  async getLocations(limit: number = 50, search?: string): Promise<LocationsResponse> {
+  async getLocations(limit: number = 200, search?: string): Promise<LocationsResponse> {
     try {
       const params: any = { limit };
       if (search) {

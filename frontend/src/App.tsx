@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import ChatInterface from './components/ChatInterface';
 import MapView from './components/MapView';
@@ -6,7 +6,7 @@ import Header from './components/Header';
 import QuickActions from './components/QuickActions';
 import LoadingScreen from './components/LoadingScreen';
 import { apiService } from './services/api';
-import { ChatMessage, LocationData } from './services/api';
+import { ChatMessage, LocationData, UserLocation } from './services/api';
 
 interface AppState {
   messages: ChatMessage[];
@@ -14,6 +14,7 @@ interface AppState {
   isLoading: boolean;
   isMapView: boolean;
   healthStatus: 'checking' | 'healthy' | 'unhealthy';
+  userLocation: UserLocation | null;
 }
 
 const App: React.FC = () => {
@@ -30,6 +31,7 @@ const App: React.FC = () => {
     isLoading: true,
     isMapView: false,
     healthStatus: 'checking',
+    userLocation: null,
   });
 
   // 初始化應用程式
@@ -70,7 +72,7 @@ const App: React.FC = () => {
     }
   };
 
-  const addMessage = (text: string, isUser: boolean, sources?: any[]) => {
+  const addMessage = useCallback((text: string, isUser: boolean, sources?: any[]) => {
     const newMessage: ChatMessage = {
       id: `${isUser ? 'user' : 'assistant'}-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
       text,
@@ -83,9 +85,9 @@ const App: React.FC = () => {
       ...prev,
       messages: [...prev.messages, newMessage],
     }));
-  };
+  }, []);
 
-  const handleSendMessage = async (message: string) => {
+  const handleSendMessage = useCallback(async (message: string) => {
     // Add user message
     addMessage(message, true);
 
@@ -107,7 +109,24 @@ const App: React.FC = () => {
     }));
 
     try {
-      const response = await apiService.sendMessage(message, true);
+      // 準備時間戳記
+      const currentTimestamp = new Date().toLocaleString('zh-TW', {
+        timeZone: 'Asia/Taipei',
+        year: 'numeric',
+        month: 'long', 
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        weekday: 'long'
+      });
+      
+      // 發送訊息，包含位置和時間資訊
+      const response = await apiService.sendMessage(
+        message, 
+        true, 
+        state.userLocation || undefined, 
+        currentTimestamp
+      );
       
       // 計算回覆時間
       const endTime = Date.now();
@@ -136,15 +155,24 @@ const App: React.FC = () => {
           msg.id === loadingMessageId
             ? {
                 ...msg,
-                text: `Sorry, an error occurred while processing your request: ${error.message}`,
+                text: `抱歉，處理您的請求時發生錯誤：${error.message}`,
               }
             : msg
         ),
       }));
     }
-  };
+  }, [addMessage, state.userLocation]);
 
-  const handleQuickAction = (action: string) => {
+  const handleLocationUpdate = useCallback((location: UserLocation | null) => {
+    setState(prev => ({
+      ...prev,
+      userLocation: location,
+    }));
+  }, []);
+
+  const [inputText, setInputText] = useState<string>('');
+
+  const handleQuickAction = useCallback((action: string, customText?: string) => {
     const quickQuestions: Record<string, string> = {
       shrines: 'Please recommend some famous shrines in Fukui Prefecture',
       attractions: 'What are the must-visit tourist attractions in Fukui Prefecture?',
@@ -152,15 +180,21 @@ const App: React.FC = () => {
       transportation: 'How can I get to Fukui Prefecture? What transportation options are available?',
     };
 
-    const question = quickQuestions[action];
+    const question = customText || quickQuestions[action];
     if (question) {
-      handleSendMessage(question);
+      setInputText(question);
     }
-  };
+  }, []);
 
-  const toggleView = () => {
+  const toggleView = useCallback(() => {
     setState(prev => ({ ...prev, isMapView: !prev.isMapView }));
-  };
+  }, []);
+
+  // Memoize computed values
+  const isLoadingComputed = useMemo(() => 
+    state.messages.some(msg => msg.text === ''), 
+    [state.messages]
+  );
 
   // Show loading screen
   if (state.isLoading) {
@@ -191,14 +225,19 @@ const App: React.FC = () => {
           transition={{ duration: 0.3 }}
         >
           {/* Quick action buttons */}
-          <QuickActions onQuickAction={handleQuickAction} />
+          <QuickActions 
+            onQuickAction={handleQuickAction} 
+            onLocationUpdate={handleLocationUpdate}
+          />
           
           {/* Chat interface */}
           <div className="flex-1 overflow-hidden">
             <ChatInterface
               messages={state.messages}
               onSendMessage={handleSendMessage}
-              isLoading={state.messages.some(msg => msg.text === '')}
+              isLoading={isLoadingComputed}
+              inputText={inputText}
+              onInputTextChange={setInputText}
             />
           </div>
         </motion.div>

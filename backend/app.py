@@ -10,6 +10,7 @@ import sys
 from pathlib import Path
 from typing import List, Dict, Any, Optional
 import logging
+from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
@@ -33,59 +34,19 @@ except ImportError as e:
 # 載入環境變數
 load_dotenv()
 
-# FastAPI 應用程式
-app = FastAPI(
-    title="福井觀光智能助手 API",
-    description="提供 ChromaDB 向量資料庫和 OpenAI GPT-4o-mini 問答功能",
-    version="1.0.0"
-)
-
-# 設定 CORS
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],  # 在生產環境中應該限制特定域名
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
 # 全域變數
-chroma_manager: Optional[ChromaDBManager] = None
+chroma_manager = None
 
-# Pydantic 模型
-class ChatRequest(BaseModel):
-    message: str
-    include_sources: bool = True
-
-class ChatResponse(BaseModel):
-    answer: str
-    sources: List[Dict[str, Any]] = []
-    success: bool = True
-    error: Optional[str] = None
-
-class LocationData(BaseModel):
-    id: str
-    title: str
-    content: str
-    metadata: Dict[str, Any]
-    coordinates: Optional[Dict[str, float]] = None
-
-class LocationsResponse(BaseModel):
-    locations: List[LocationData]
-    total_count: int
-    success: bool = True
-    error: Optional[str] = None
-
-# 啟動事件
-@app.on_event("startup")
-async def startup_event():
-    """應用程式啟動時初始化 ChromaDB"""
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """應用程式生命週期管理"""
     global chroma_manager
     try:
         print("🚀 初始化 ChromaDB 向量資料庫...")
         
         if ChromaDBManager is None:
             print("⚠️ ChromaDB 管理器無法載入，使用模擬模式")
+            yield
             return
             
         chroma_manager = ChromaDBManager(
@@ -107,6 +68,57 @@ async def startup_event():
         print(f"❌ 後端服務初始化失敗：{e}")
         print("將以簡化模式運行")
         chroma_manager = None
+    
+    yield  # 應用程式執行中
+    
+    # 清理程式碼（如果需要的話）
+    print("🔄 應用程式關閉中...")
+
+# FastAPI 應用程式
+app = FastAPI(
+    title="福井觀光智能助手 API",
+    description="提供 ChromaDB 向量資料庫和 OpenAI GPT-4o-mini 問答功能",
+    version="1.0.0",
+    lifespan=lifespan
+)
+
+# 設定 CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # 在生產環境中應該限制特定域名
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Pydantic 模型
+class ChatRequest(BaseModel):
+    message: str
+    include_sources: bool = True
+    user_location: Optional[Dict[str, float]] = None  # {"latitude": 35.xx, "longitude": 136.xx}
+    timestamp: Optional[str] = None
+
+class ChatResponse(BaseModel):
+    answer: str
+    sources: List[Dict[str, Any]] = []
+    success: bool = True
+    error: Optional[str] = None
+
+class LocationData(BaseModel):
+    id: str
+    title: str
+    content: str
+    metadata: Dict[str, Any]
+    coordinates: Optional[Dict[str, float]] = None
+
+class LocationsResponse(BaseModel):
+    locations: List[LocationData]
+    total_count: int
+    success: bool = True
+    error: Optional[str] = None
+
+# 全域變數
+chroma_manager = None
 
 async def load_initial_data():
     """載入初始資料到 ChromaDB"""
@@ -223,37 +235,87 @@ async def health_check():
 
 @app.post("/chat", response_model=ChatResponse)
 async def chat(request: ChatRequest):
-    """聊天問答端點"""
+    """聊天問答端點 - 支援時間和位置感知"""
     if chroma_manager is None:
         raise HTTPException(status_code=503, detail="ChromaDB 管理器未初始化")
     
     try:
+        # 增強查詢訊息，加入時間和位置資訊
+        enhanced_message = request.message
+        
+        # 加入時間資訊（如果提供）
+        if request.timestamp:
+            enhanced_message += f"\n\n[時間資訊: {request.timestamp}]"
+        
+        # 加入位置資訊（如果提供）
+        location_context = ""
+        if request.user_location:
+            lat = request.user_location.get('latitude')
+            lng = request.user_location.get('longitude')
+            if lat and lng:
+                location_context = f"\n\n[使用者位置: 緯度 {lat:.4f}, 經度 {lng:.4f}]"
+                enhanced_message += location_context
+                
+                # 檢查使用者是否在福井縣境內或附近
+                if is_near_fukui(lat, lng):
+                    enhanced_message += "\n[注意: 使用者目前在福井縣境內或附近，請優先推薦距離較近的景點]"
+        
         # 搜尋相關文件 - 使用地理位置感知搜尋
-        relevant_docs = chroma_manager.search_similar_with_location(request.message, n_results=3)
+        relevant_docs = chroma_manager.search_similar_with_location(
+            enhanced_message, 
+            n_results=5,
+            max_distance_km=50.0 if request.user_location else None
+        )
         
         if not relevant_docs:
             return ChatResponse(
-                answer="Sorry, I couldn't find relevant information. Please try asking other questions about Fukui Prefecture tourist attractions or shrines.",
+                answer="抱歉，我找不到相關資訊。請嘗試詢問其他關於福井縣觀光景點或神社的問題。",
                 sources=[],
                 success=True
             )
         
-        # 使用 GPT 生成專業導遊式回答 - 啟用地理位置感知
+        # 建立系統提示，包含時間和位置感知
+        system_prompt = f"""你是一位專業的福井縣觀光導遊 AI 助手。請根據以下資訊回答問題：
+
+1. 時間感知：
+   - 如果提到季節活動，請考慮當前時間 {request.timestamp or '(未提供時間資訊)'}
+   - 根據季節推薦最適合的景點和活動
+   - 提醒使用者注意營業時間和季節性關閉資訊
+
+2. 位置感知：
+   {f"- 使用者位置：{location_context}" if location_context else "- 未提供使用者位置資訊"}
+   - 如果使用者在福井縣內，優先推薦附近景點
+   - 提供具體的交通指引和距離資訊
+   - 考慮實際的交通便利性
+
+3. 回答風格：
+   - 使用繁體中文回答
+   - 提供詳細且實用的資訊
+   - 包含交通方式、開放時間、特色介紹
+   - 適當加入當地文化背景"""
+        
+        # 使用 GPT 生成專業導遊式回答
         answer = chroma_manager.ask_gpt(
-            f"As a professional tour guide, please help with this question: {request.message}", 
+            f"{system_prompt}\n\n使用者問題：{request.message}", 
             relevant_docs,
-            use_location_aware_search=False  # 已經使用地理位置搜尋了，這裡不需要再次搜尋
+            use_location_aware_search=False  # 已經使用地理位置搜尋了
         )
         
         # 準備來源資訊
         sources = []
         if request.include_sources:
             for doc in relevant_docs:
-                sources.append({
+                source_info = {
                     "title": doc['metadata'].get('title', '未知'),
                     "type": doc['metadata'].get('source_type', 'unknown'),
                     "content": doc['content'][:200] + "..." if len(doc['content']) > 200 else doc['content']
-                })
+                }
+                
+                # 如果有地理位置資訊，加入距離
+                if request.user_location and 'location_score' in doc:
+                    source_info['location_score'] = doc['location_score']
+                
+                sources.append(source_info)
         
         return ChatResponse(
             answer=answer,
@@ -264,11 +326,41 @@ async def chat(request: ChatRequest):
     except Exception as e:
         logging.error(f"Chat processing error: {e}")
         return ChatResponse(
-            answer="Sorry, an error occurred while processing your question. Please try again later.",
+            answer="抱歉，處理您的問題時發生錯誤。請稍後再試。",
             sources=[],
             success=False,
             error=str(e)
         )
+
+def is_near_fukui(latitude: float, longitude: float, radius_km: float = 100.0) -> bool:
+    """檢查使用者是否在福井縣附近
+    
+    Args:
+        latitude: 使用者緯度
+        longitude: 使用者經度  
+        radius_km: 判定範圍（公里）
+        
+    Returns:
+        bool: 是否在福井縣附近
+    """
+    # 福井縣大致的中心座標
+    fukui_center_lat = 35.9044
+    fukui_center_lng = 136.1892
+    
+    # 計算距離（簡化的球面距離計算）
+    from math import radians, cos, sin, asin, sqrt
+    
+    # 轉換為弧度
+    lat1, lng1 = radians(latitude), radians(longitude)
+    lat2, lng2 = radians(fukui_center_lat), radians(fukui_center_lng)
+    
+    # Haversine 公式
+    dlat = lat2 - lat1
+    dlng = lng2 - lng1
+    a = sin(dlat/2)**2 + cos(lat1) * cos(lat2) * sin(dlng/2)**2
+    distance_km = 2 * asin(sqrt(a)) * 6371  # 地球半徑約 6371 公里
+    
+    return distance_km <= radius_km
 
 @app.get("/locations", response_model=LocationsResponse)
 async def get_locations(limit: int = 200, search: Optional[str] = None):
@@ -394,11 +486,11 @@ async def search_locations(query: str, limit: int = 10):
         raise HTTPException(status_code=500, detail=f"搜尋失敗：{str(e)}")
 
 if __name__ == "__main__":
-    # 開發模式執行
+    # 開發模式執行 - 禁用自動重新載入以避免虛擬環境檔案觸發重啟
     uvicorn.run(
         "app:app",
         host="0.0.0.0",
-        port=8000,
-        reload=True,
+        port=8002,
+        reload=False,  # 暫時禁用自動重新載入
         log_level="info"
     )

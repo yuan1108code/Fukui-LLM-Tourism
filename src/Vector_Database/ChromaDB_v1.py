@@ -11,6 +11,7 @@ import json
 import logging
 import math
 import hashlib
+import time
 from typing import List, Dict, Any, Tuple, Optional
 from pathlib import Path
 import chromadb
@@ -18,7 +19,6 @@ from chromadb.utils import embedding_functions
 import openai
 from openai import OpenAI
 from dotenv import load_dotenv
-import hashlib
 
 class ChromaDBManager:
     """ChromaDB 向量資料庫管理器"""
@@ -63,20 +63,56 @@ class ChromaDBManager:
             # 建立資料庫目錄
             self.db_path.mkdir(parents=True, exist_ok=True)
             
+            # 嘗試清理可能損壞的資料庫檔案
+            self._cleanup_corrupted_db()
+            
             # 使用新的 ChromaDB 客戶端初始化方式
             self.client = chromadb.PersistentClient(path=str(self.db_path))
             
-            # 暫時使用預設的 embedding 函式，避免版本相容性問題
-            self.collection = self.client.get_or_create_collection(
-                name=self.collection_name,
-                metadata={"description": "福井縣觀光景點和神社資訊"}
-            )
+            # 嘗試獲取現有集合或建立新集合
+            try:
+                self.collection = self.client.get_collection(name=self.collection_name)
+                self.logger.info(f"成功載入現有集合：{self.collection_name}")
+            except Exception:
+                # 如果集合不存在，建立新的集合
+                self.collection = self.client.create_collection(
+                    name=self.collection_name,
+                    metadata={"description": "福井縣觀光景點和神社資訊"}
+                )
+                self.logger.info(f"成功建立新集合：{self.collection_name}")
             
             self.logger.info(f"ChromaDB 初始化成功，集合名稱：{self.collection_name}")
             
         except Exception as e:
             self.logger.error(f"ChromaDB 初始化失敗：{e}")
+            # 嘗試更詳細的錯誤處理
+            if "'_type'" in str(e):
+                self.logger.error("檢測到 ChromaDB 版本相容性問題，嘗試清理並重新初始化...")
+                self._cleanup_corrupted_db()
+                raise Exception("ChromaDB 版本相容性問題，請重新啟動服務")
             raise
+    
+    def _cleanup_corrupted_db(self):
+        """清理可能損壞的資料庫檔案"""
+        try:
+            # 檢查是否有損壞的 SQLite 檔案
+            sqlite_file = self.db_path / "chroma.sqlite3"
+            if sqlite_file.exists():
+                # 備份現有檔案
+                backup_file = self.db_path / f"chroma_backup_{int(time.time())}.sqlite3"
+                sqlite_file.rename(backup_file)
+                self.logger.info(f"已備份可能損壞的資料庫檔案：{backup_file}")
+            
+            # 清理其他可能的損壞檔案
+            for file_path in self.db_path.glob("*"):
+                if file_path.is_file() and file_path.suffix in ['.sqlite3', '.db']:
+                    if file_path.name != 'chroma.sqlite3':
+                        backup_file = self.db_path / f"{file_path.stem}_backup_{int(time.time())}{file_path.suffix}"
+                        file_path.rename(backup_file)
+                        self.logger.info(f"已備份檔案：{backup_file}")
+                        
+        except Exception as e:
+            self.logger.warning(f"清理資料庫檔案時發生錯誤：{e}")
             
     def setup_openai(self):
         """設定 OpenAI 客戶端"""
