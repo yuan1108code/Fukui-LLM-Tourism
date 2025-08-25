@@ -265,8 +265,8 @@ def main():
     print("=== 福井縣神社資料自然語言轉換程式 ===")
     
     # 檔案路徑設定
-    input_file = "output/enhanced_shrines.json"
-    output_file = "output/shrines_natural_language.md"
+    input_file = "/Users/zhuboyuan/Desktop/University-NCHU/NCHU-Project/Project-FUKUI/src/src-LLM-Shrine/output/enhanced_shrines_full.json"
+    output_file = "/Users/zhuboyuan/Desktop/University-NCHU/NCHU-Project/Project-FUKUI/src/src-LLM-Shrine/output/shrines_natural_language.md"
     
     # 檢查輸入檔案是否存在
     if not os.path.exists(input_file):

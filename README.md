@@ -1,269 +1,263 @@
-# 福井觀光智能助手 🏯
+# Fukui Tourism AI Assistant 🏯
 
-> 一個結合 AI 智能問答與互動式地圖的現代化觀光助手，專為探索日本福井縣的神社與觀光景點而設計
+> A modern tourism assistant combining AI-powered Q&A with interactive maps, designed for exploring shrines and tourist attractions in Fukui Prefecture, Japan
 
-![福井觀光智能助手](https://img.shields.io/badge/Fukui-Tourism%20AI%20Assistant-blue?style=for-the-badge&logo=react)
-![技術棧](https://img.shields.io/badge/Tech%20Stack-React%20%2B%20FastAPI%20%2B%20ChromaDB-green?style=flat-square)
-![版本](https://img.shields.io/badge/Version-1.0.0-orange?style=flat-square)
+![Fukui Tourism AI Assistant](https://img.shields.io/badge/Fukui-Tourism%20AI%20Assistant-blue?style=for-the-badge&logo=react)
+![Tech Stack](https://img.shields.io/badge/Tech%20Stack-React%20%2B%20FastAPI%20%2B%20ChromaDB-green?style=flat-square)
+![Version](https://img.shields.io/badge/Version-1.0.0-orange?style=flat-square)
 
-## ✨ 專案概述
+## ✨ Project Overview
 
-福井觀光智能助手是一個全端 **Web** 應用程式，透過 AI 技術為使用者提供福井縣神社與景點的智能問答服務。整合了向量資料庫技術與自然語言處理，提供準確且相關的觀光資訊。
+The Fukui Tourism AI Assistant is a full-stack **Web** application that provides intelligent Q&A services for shrines and tourist attractions in Fukui Prefecture through AI technology. It integrates vector database technology with natural language processing to provide accurate and relevant tourism information.
 
-### 🎯 核心功能
+### 🎯 Core Features
 
-- 🤖 **AI 智能問答** - 透過 GPT-4o-mini 提供準確的觀光資訊
-- 🗺️ **互動式地圖** - 視覺化顯示景點位置與相關資訊
-- 🔍 **向量語義搜尋** - 使用 ChromaDB 進行精準的內容搜尋
-- 📱 **響應式介面** - 現代化的使用者體驗設計
-- 🌍 **地理位置感知** - 基於距離的智能景點推薦
+- 🤖 **AI-Powered Q&A** - Provides accurate tourism information through GPT-4o-mini
+- 🗺️ **Interactive Maps** - Visualizes attraction locations and related information
+- 🔍 **Vector Semantic Search** - Uses ChromaDB for precise content search
+- 📱 **Responsive Interface** - Modern user experience design
+- 🌍 **Location-Aware** - Intelligent attraction recommendations based on distance
 
 ---
 
-## 🏗️ 技術架構
+## 🏗️ Technical Architecture
 
 ```mermaid
 graph TB
-    A[前端 React App] --> B[FastAPI 後端]
-    B --> C[ChromaDB 向量資料庫]
+    A[Frontend React App] --> B[FastAPI Backend]
+    B --> C[ChromaDB Vector Database]
     B --> D[OpenAI GPT-4o-mini]
-    C --> E[自然語言資料]
-    F[Google Maps API] --> G[景點資料增強]
-    H[多源搜尋引擎] --> I[神社詳細資訊]
+    C --> E[Natural Language Data]
+    F[Google Maps API] --> G[Attraction Data Enhancement]
+    H[Multi-Source Search Engine] --> I[Shrine Detailed Information]
 ```
 
-### 技術棧
+### Tech Stack
 
-#### 前端技術
-- **React 18** + **TypeScript** - 現代化前端框架
-- **Tailwind CSS** - 響應式設計系統
-- **Framer Motion** - 流暢動畫效果
-- **Mapbox GL JS** - 互動式地圖
-- **Vite** - 快速建構工具
+#### Frontend Technologies
+- **React 18** + **TypeScript** - Modern frontend framework
+- **Tailwind CSS** - Responsive design system
+- **Framer Motion** - Smooth animation effects
+- **Mapbox GL JS** - Interactive maps
+- **Vite** - Fast build tool
 
-#### 後端技術
-- **FastAPI** - 高效能 Python Web 框架
-- **ChromaDB** - 向量資料庫
-- **OpenAI API** - GPT-4o-mini 語言模型
-- **Uvicorn** - ASGI 伺服器
+#### Backend Technologies
+- **FastAPI** - High-performance Python web framework
+- **ChromaDB** - Vector database
+- **OpenAI API** - GPT-4o-mini language model
+- **Uvicorn** - ASGI server
 
-#### 資料處理
-- **Google Maps API** - 景點資料增強
-- **多源搜尋引擎** - 整合 Google、Perplexity、OpenAI **搜尋**
-- **自然語言處理** - JSON 到 Markdown 轉換
+#### Data Processing
+- **Google Maps API** - Attraction data enhancement
+- **Multi-Source Search Engine** - Integrates Google, Perplexity, OpenAI search
+- **Natural Language Processing** - JSON to Markdown conversion
 
 ---
 
-## 📦 專案結構
+## 📦 Project Structure
 
 ```
-福井觀光智能助手/
-├── 📱 前端應用程式 (frontend/)
+Fukui Tourism AI Assistant/
+├── 📱 Frontend Application (frontend/)
 │   ├── src/
-│   │   ├── components/          # React 元件
-│   │   │   ├── ChatInterface.tsx     # 聊天介面
-│   │   │   ├── MapView.tsx          # 地圖視圖
-│   │   │   ├── Header.tsx           # 頁首元件
-│   │   │   ├── QuickActions.tsx     # 快速動作
-│   │   │   └── LoadingScreen.tsx    # 載入畫面
-│   │   ├── services/           # API 服務層
-│   │   │   └── api.ts              # API 介面定義
-│   │   └── App.tsx            # 主應用程式
-│   ├── package.json           # Node.js 相依套件
-│   └── vite.config.ts         # Vite 設定檔案
+│   │   ├── components/          # React components
+│   │   │   ├── ChatInterface.tsx     # Chat interface
+│   │   │   ├── MapView.tsx          # Map view
+│   │   │   ├── Header.tsx           # Header component
+│   │   │   ├── QuickActions.tsx     # Quick actions
+│   │   │   └── LoadingScreen.tsx    # Loading screen
+│   │   ├── services/           # API service layer
+│   │   │   └── api.ts              # API interface definition
+│   │   └── App.tsx            # Main application
+│   ├── package.json           # Node.js dependencies
+│   └── vite.config.ts         # Vite configuration file
 │
-├── 📡 後端服務 (backend/)
-│   ├── app.py                 # FastAPI 主服務
-│   ├── test_app.py           # 測試用 API 服務
-│   └── requirements.txt       # Python 相依套件
+├── 📡 Backend Service (backend/)
+│   ├── app.py                 # FastAPI main service
+│   └── requirements.txt       # Python dependencies
 │
-├── 🗄️ 向量資料庫 (chroma_db/)
-│   └── [ChromaDB 資料檔案]
+├── 🗄️ Vector Database (chroma_db/)
+│   └── [ChromaDB data files]
 │
-├── 🔧 資料處理工具 (src/)
-│   ├── JSON_Generator/        # JSON 資料產生器
-│   │   ├── Google_Map_API_Location.py   # Google Maps 資料撷取
-│   │   └── Search_Engine_Shrine.py      # 神社搜尋引擎
-│   ├── Markdown_Generator/    # Markdown 產生器
-│   │   ├── convert_all_to_natural_language.py  # 主控程式
-│   │   ├── location_to_natural_language.py     # 景點轉換
-│   │   └── shrine_to_natural_language.py       # 神社轉換
-│   └── Vector_Database/       # 向量資料庫管理
-│       └── ChromaDB_v1.py            # ChromaDB 管理器
+├── 🔧 Data Processing Tools (src/)
+│   ├── JSON_Generator/        # JSON data generators
+│   │   ├── Google_Map_API_Location.py   # Google Maps data extraction
+│   │   └── Search_Engine_Shrine.py      # Shrine search engine
+│   ├── Markdown_Generator/    # Markdown generators
+│   │   ├── convert_all_to_natural_language.py  # Main controller
+│   │   ├── location_to_natural_language.py     # Attraction conversion
+│   │   └── shrine_to_natural_language.py       # Shrine conversion
+│   └── Vector_Database/       # Vector database management
+│       └── ChromaDB_v1.py            # ChromaDB manager
 │
-├── 📄 資料檔案 (data/ & output/)
-│   ├── data/fukui_location.json      # 原始景點資料
-│   ├── data/shrines_detail.csv       # 神社詳細資料
-│   ├── output/enhanced_shrines.json  # 增強後神社資料
-│   └── output/locations_natural_language.md  # 自然語言資料
+├── 📄 Data Files (data/ & output/)
+│   ├── data/fukui_location.json      # Original attraction data
+│   ├── data/shrines_detail.csv       # Shrine detailed data
+│   ├── output/enhanced_shrines.json  # Enhanced shrine data
+│   └── output/locations_natural_language.md  # Natural language data
 │
-├── 🚀 自動化腳本
-│   ├── start_dev.sh          # 開發環境啟動腳本
-│   └── stop_dev.sh           # 服務停止腳本
+├── 🚀 Automation Scripts
+│   ├── start_dev_optimized.sh          # Development environment startup script
+│   └── stop_dev.sh           # Service stop script
 │
-└── ⚙️ 設定檔案
-    ├── .env                   # 環境變數設定
-    └── requirements.txt       # 全域 Python 相依套件
+└── ⚙️ Configuration Files
+    ├── .env                   # Environment variable configuration
+    └── requirements.txt       # Global Python dependencies
 ```
 
 ---
 
-## 🚀 快速開始
+## 🚀 Quick Start
 
-### 前置需求
+### Prerequisites
 - **Python 3.8+**
 - **Node.js 16+**
 - **OpenAI API Key**
-- **Google Maps API Key** (選用)
+- **Google Maps API Key** (Optional)
 
-### 1. 環境設定
+### 1. Environment Setup
 
 ```bash
-# 複製專案
-git clone <專案網址>
+# Clone the project
+git clone <project-url>
 cd src-LLM-Shrine
 
-# 設定環境變數
+# Set up environment variables
 cp .env.example .env
 ```
 
-### 2. 設定 API 金鑰
+### 2. Configure API Keys
 
-編輯 `.env` 檔案：
+Edit the `.env` file:
 
 ```bash
-# OpenAI API 設定 (必需)
+# OpenAI API Configuration (Required)
 OPENAI_API_KEY=your_openai_api_key_here
 
-# Google Maps API 設定 (選用)
+# Google Maps API Configuration (Optional)
 GOOGLE_MAPS_API_KEY=your_google_maps_key_here
 GOOGLE_API_KEY=your_google_custom_search_key_here
 GOOGLE_ENGINE_ID=your_search_engine_id_here
 
-# 其他 API 設定
+# Other API Configuration
 PERPLEXITY_API_KEY=your_perplexity_key_here
 ```
 
-### 3. 一鍵啟動 🎯
+### 3. One-Click Launch 🎯
 
 ```bash
-# 自動安裝相依套件並啟動所有服務
-./start_dev.sh
+# Automatically install dependencies and start all services
+./start_dev_optimized.sh
 ```
 
-### 4. 開啟應用程式
+### 4. Open the Application
 
-- **前端介面**: http://localhost:3000
-- **後端 API**: http://localhost:8000
-- **API 文件**: http://localhost:8000/docs
+- **Frontend Interface**: http://localhost:3000
+- **Backend API**: http://localhost:8000
+- **API Documentation**: http://localhost:8000/docs
 
 ---
 
-## 🎮 功能詳解
+## 🎮 Feature Details
 
-### 1. 資料撷取與處理
+### 1. Data Extraction and Processing
 
-#### Google Maps 資料增強工具
+#### Google Maps Data Enhancement Tool
 ```bash
 cd src
 python3 Google_Map_API_Location.py
 ```
 
-**功能特色：**
-- ✅ 自動從 `.env` 檔案載入配置
-- ✅ API 金鑰有效性驗證
-- ✅ 成本估算和安全檢查
-- ✅ 重複資料檢測和跳過
-- ✅ 自動進度保存和恢復
-- ✅ 完整的錯誤處理和重試機制
+**Features:**
+- ✅ Automatic configuration loading from `.env` file
+- ✅ API key validity verification
+- ✅ Cost estimation and safety checks
+- ✅ Duplicate data detection and skipping
+- ✅ Automatic progress saving and recovery
+- ✅ Complete error handling and retry mechanisms
 
-#### 神社搜尋引擎
+#### Shrine Search Engine
 ```bash
 cd src
 python3 Search_Engine_Shrine.py
 ```
 
-**多源搜尋整合：**
+**Multi-source search integration:**
 - 🔍 Google Custom Search API
 - 🌐 Perplexity API  
-- 🤖 OpenAI GPT 輔助處理
-- 📊 智能資料整合與驗證
+- 🤖 OpenAI GPT-assisted processing
+- 📊 Intelligent data integration and validation
 
-### 2. 自然語言轉換
+### 2. Natural Language Conversion
 
-#### 批次轉換工具
+#### Batch Conversion Tool
 ```bash
 cd src
 python3 convert_all_to_natural_language.py
 ```
 
-**轉換功能：**
-- 📝 JSON 轉 Markdown 格式
-- 🏯 神社資料結構化處理
-- 🗺️ 景點資訊自然語言化
-- 📋 批次處理與進度追蹤
+**Conversion features:**
+- 📝 JSON to Markdown format conversion
+- 🏯 Structured shrine data processing
+- 🗺️ Natural language attraction information
+- 📋 Batch processing and progress tracking
 
-### 3. 向量資料庫管理
+### 3. Vector Database Management
 
-#### ChromaDB 整合
+#### ChromaDB Integration
 ```python
 from src.Vector_Database.ChromaDB_v1 import ChromaDBManager
 
-# 初始化資料庫管理器
+# Initialize database manager
 manager = ChromaDBManager()
 
-# 載入資料
+# Load data
 manager.load_data_from_markdown()
 
-# 進行查詢
-result = manager.query("福井縣有哪些著名的神社？")
+# Perform queries
+result = manager.query("What are the famous shrines in Fukui Prefecture?")
 ```
 
-**向量搜尋特色：**
-- 🧠 語義理解搜尋
-- 📍 地理位置感知
-- 🎯 高精準度匹配
-- ⚡ 快速回應時間
+**Vector search features:**
+- 🧠 Semantic understanding search
+- 📍 Location-aware processing
+- 🎯 High-precision matching
+- ⚡ Fast response times
 
-### 4. Web 應用程式
+### 4. Web Application
 
-#### 前端功能
-- 💬 即時聊天介面
-- 🗺️ 互動式地圖顯示
-- 📱 響應式設計
-- ✨ 流暢動畫效果
-- 🚀 快速操作按鈕
+#### Frontend Features
+- 💬 Real-time chat interface
+- 🗺️ Interactive map display
+- 📱 Responsive design
+- ✨ Smooth animation effects
+- 🚀 Quick action buttons
 
-#### 後端 API
-- 🔗 RESTful API 設計
-- 📊 自動 API 文件產生
-- 🛡️ 完整錯誤處理
-- 📈 效能監控
+#### Backend API
+- 🔗 RESTful API design
+- 📊 Automatic API documentation generation
+- 🛡️ Complete error handling
+- 📈 Performance monitoring
 
 ---
 
-## 🆕 最新功能
+## 🆕 Latest Features
 
-### 地理位置感知搜尋
+### Location-Aware Search
 
-**智能地理推薦系統：**
-✅ **優先推薦同一城市的景點** - 避免推薦距離太遠的景點組合  
-✅ **考慮地理距離遠近** - 使用 Haversine 公式精確計算距離  
-✅ **提供實用的旅遊路線** - GPT 會建議地理上連貫的行程安排  
-✅ **智能識別地點查詢** - 自動從使用者問題中識別城市和地點  
-
-```bash
-# 體驗地理感知搜尋
-python3 demo_location_aware.py
-```
+**Intelligent Geographic Recommendation System:**
+✅ **Prioritize attractions in the same city** - Avoid recommending attractions that are too far apart  
+✅ **Consider geographic distance** - Use Haversine formula for precise distance calculation  
+✅ **Provide practical travel routes** - GPT suggests geographically coherent itineraries  
+✅ **Intelligent location recognition** - Automatically identify cities and locations from user queries  
 
 ---
 
-## 🛠️ 進階使用
+## 🛠️ Advanced Usage
 
-### 手動安裝步驟
+### Manual Installation Steps
 
-#### 後端設定
+#### Backend Setup
 ```bash
 cd backend
 python3 -m venv venv
@@ -272,99 +266,99 @@ pip install -r requirements.txt
 python app.py
 ```
 
-#### 前端設定
+#### Frontend Setup
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
 
-### 資料更新流程
+### Data Update Process
 
-1. **更新原始資料**：修改 `data/` 目錄下的資料檔案
-2. **重新處理**：執行相關的處理腳本
-3. **更新向量資料庫**：重新載入 ChromaDB
-4. **重啟服務**：使用 `./start_dev.sh` 重新啟動
+1. **Update raw data**: Modify data files in the `data/` directory
+2. **Reprocess**: Execute relevant processing scripts
+3. **Update vector database**: Reload ChromaDB
+4. **Restart services**: Use `./start_dev_optimized.sh` to restart
 
 ---
 
-## 🔧 疑難排解
+## 🔧 Troubleshooting
 
-### 常見問題
+### Common Issues
 
-**Q: 無法連接到後端服務**
+**Q: Cannot connect to backend service**
 ```bash
-# 檢查後端服務狀態
+# Check backend service status
 curl http://localhost:8000/health
 ```
 
-**Q: ChromaDB 錯誤**
+**Q: ChromaDB errors**
 ```bash
-# 重新建立資料庫
+# Recreate database
 rm -rf chroma_db/
 python src/Vector_Database/ChromaDB_v1.py
 ```
 
-**Q: API 金鑰問題**
-- 確認 `.env` 檔案中的 API 金鑰設定正確
-- 檢查 API 服務是否啟用相關功能
+**Q: API key issues**
+- Verify API key settings in `.env` file
+- Check if API services have enabled relevant features
 
 ---
 
-## 📊 效能資訊
+## 📊 Performance Information
 
-### 系統需求
-- **記憶體**: 建議 4GB 以上
-- **儲存空間**: 約 500MB
-- **網路**: 需要穩定的網際網路連線
+### System Requirements
+- **Memory**: Recommended 4GB or more
+- **Storage**: Approximately 500MB
+- **Network**: Requires stable internet connection
 
-### API 使用量
-- **OpenAI API**: 依問答頻率而定
-- **Google Maps API**: 每個景點約 2 次調用
-- **ChromaDB**: 本地向量搜尋，無外部調用
-
----
-
-## 🔮 未來規劃
-
-- [ ] 多語言支援 (英文、中文、日文)
-- [ ] 即時天氣資訊整合
-- [ ] 使用者評價系統
-- [ ] 路線規劃功能
-- [ ] 行動應用程式版本
-- [ ] AR 擴增實境功能
+### API Usage
+- **OpenAI API**: Depends on Q&A frequency
+- **Google Maps API**: Approximately 2 calls per attraction
+- **ChromaDB**: Local vector search, no external calls
 
 ---
 
-## 📄 授權
+## 🔮 Future Plans
 
-本專案採用 MIT 授權條款。詳細資訊請參考 [LICENSE](LICENSE) 檔案。
-
----
-
-## 🤝 貢獻指南
-
-歡迎提交 Issue 和 Pull Request！請確保：
-
-1. 程式碼符合專案風格
-2. 包含適當的測試
-3. 更新相關文件
-4. 遵循 Commit 訊息規範
+- [ ] Multi-language support (English, Chinese, Japanese)
+- [ ] Real-time weather information integration
+- [ ] User rating system
+- [ ] Route planning functionality
+- [ ] Mobile application version
+- [ ] AR augmented reality features
 
 ---
 
-## 📧 聯絡方式
+## 📄 License
 
-如有任何問題或建議，請透過以下方式聯絡：
+This project is licensed under the MIT License. See [LICENSE](LICENSE) file for details.
 
-- **GitHub Issues**: [專案 Issues 頁面]
-- **Email**: [您的電子郵件]
+---
+
+## 🤝 Contributing
+
+Welcome to submit Issues and Pull Requests! Please ensure:
+
+1. Code follows project style
+2. Includes appropriate tests
+3. Updates relevant documentation
+4. Follows commit message conventions
+
+---
+
+## 📧 Contact
+
+For any questions or suggestions, please contact through:
+
+- **GitHub Issues**: [Project Issues Page]
+- **Email**: [Your Email]
 
 ---
 
 <div align="center">
 
-**福井觀光智能助手** - 讓 AI 帶您探索福井之美 🏯
+**Fukui Tourism AI Assistant** - Let AI guide you to explore the beauty of Fukui 🏯
 
 Made with ❤️ for Fukui Tourism
 

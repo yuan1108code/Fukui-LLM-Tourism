@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8001';
 
 // Create axios instance
 const api = axios.create({
@@ -9,6 +9,8 @@ const api = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
+  // 重試機制
+  validateStatus: (status) => status < 500, // 只有 5xx 錯誤才重試
 });
 
 // Request interceptor
@@ -22,13 +24,33 @@ api.interceptors.request.use(
   }
 );
 
-// Response interceptor
+// Response interceptor with retry logic
 api.interceptors.response.use(
   (response) => {
     console.log(`Received response: ${response.status} ${response.config.url}`);
     return response;
   },
-  (error) => {
+  async (error) => {
+    const config = error.config;
+    
+    // 如果是網路錯誤或 5xx 錯誤，進行重試
+    if (
+      (!error.response || error.response.status >= 500) &&
+      config &&
+      !config._retry &&
+      config._retryCount < 3
+    ) {
+      config._retry = true;
+      config._retryCount = (config._retryCount || 0) + 1;
+      
+      console.log(`Retrying request (attempt ${config._retryCount}/3): ${config.url}`);
+      
+      // 等待一段時間後重試
+      await new Promise(resolve => setTimeout(resolve, 1000 * config._retryCount));
+      
+      return api(config);
+    }
+    
     console.error('API Error:', error.response?.data || error.message);
     return Promise.reject(error);
   }
@@ -85,6 +107,12 @@ export interface ChatResponse {
 export interface LocationsResponse {
   locations: LocationData[];
   total_count: number;
+  success: boolean;
+  error?: string;
+}
+
+export interface StoryResponse {
+  story: string;
   success: boolean;
   error?: string;
 }
@@ -154,6 +182,24 @@ export const apiService = {
     }
   },
 
+  // Get shrine data
+  async getShrines(limit: number = 500, search?: string): Promise<LocationsResponse> {
+    try {
+      const params: any = { limit };
+      if (search) {
+        params.search = search;
+      }
+      
+      const response = await api.get('/shrines', { params });
+      return response.data;
+    } catch (error: any) {
+      if (error.response?.data) {
+        throw new Error(error.response.data.detail || 'Failed to get shrine data');
+      }
+      throw new Error('Network error, please check connection');
+    }
+  },
+
   // Search attractions
   async searchLocations(query: string, limit: number = 10) {
     try {
@@ -164,6 +210,24 @@ export const apiService = {
     } catch (error: any) {
       if (error.response?.data) {
         throw new Error(error.response.data.detail || 'Search failed');
+      }
+      throw new Error('Network error, please check connection');
+    }
+  },
+
+  // Generate travel story
+  async generateStory(formData: FormData): Promise<StoryResponse> {
+    try {
+      const response = await api.post('/api/generate-story', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+        timeout: 60000, // 增加超時時間到 60 秒
+      });
+      return response.data;
+    } catch (error: any) {
+      if (error.response?.data) {
+        throw new Error(error.response.data.detail || 'Failed to generate story');
       }
       throw new Error('Network error, please check connection');
     }

@@ -2,6 +2,8 @@ import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import ChatInterface from './components/ChatInterface';
 import MapView from './components/MapView';
+import StoryModeDemo from './components/StoryModeDemo';
+import StoryModeReal from './components/StoryModeReal';
 import Header from './components/Header';
 import QuickActions from './components/QuickActions';
 import LoadingScreen from './components/LoadingScreen';
@@ -11,10 +13,17 @@ import { ChatMessage, LocationData, UserLocation } from './services/api';
 interface AppState {
   messages: ChatMessage[];
   locations: LocationData[];
+  shrines: LocationData[];  // Shrine data
+  customLocations: LocationData[];  // User-defined custom locations
   isLoading: boolean;
   isMapView: boolean;
+  isStoryMode: boolean;  // Story mode state
+  isEditMode: boolean;  // Edit mode state
   healthStatus: 'checking' | 'healthy' | 'unhealthy';
   userLocation: UserLocation | null;
+  selectedLocation: LocationData | null;  // Currently selected location
+  showEditForm: boolean;  // Show edit form state
+  editFormCoordinates: { lat: number; lng: number } | null;  // Coordinates for edit form
 }
 
 const App: React.FC = () => {
@@ -28,13 +37,20 @@ const App: React.FC = () => {
       },
     ],
     locations: [],
+    shrines: [],  // Initialize shrine data
+    customLocations: [],  // Initialize custom locations
     isLoading: true,
     isMapView: false,
+    isStoryMode: false,  // Initialize story mode as closed
+    isEditMode: false,  // Initialize edit mode as closed
     healthStatus: 'checking',
     userLocation: null,
+    selectedLocation: null,
+    showEditForm: false,
+    editFormCoordinates: null,
   });
 
-  // 初始化應用程式
+  // Initialize application
   useEffect(() => {
     initializeApp();
   }, []);
@@ -50,14 +66,23 @@ const App: React.FC = () => {
       // Load location data
       const locationsResponse = await apiService.getLocations();
       
+      // Load shrine data
+      let shrinesResponse: { locations: LocationData[] } = { locations: [] };
+      try {
+        shrinesResponse = await apiService.getShrines();
+      } catch (error) {
+        console.warn('Failed to load shrine data:', error);
+      }
+      
       setState(prev => ({
         ...prev,
         locations: locationsResponse.locations,
+        shrines: shrinesResponse.locations,
         healthStatus: 'healthy',
         isLoading: false,
       }));
 
-      console.log(`Successfully loaded ${locationsResponse.locations.length} attraction data`);
+      console.log(`Successfully loaded ${locationsResponse.locations.length} attraction data and ${shrinesResponse.locations.length} shrine data`);
       
     } catch (error) {
       console.error('Application initialization failed:', error);
@@ -91,7 +116,7 @@ const App: React.FC = () => {
     // Add user message
     addMessage(message, true);
 
-    // 記錄開始時間
+    // Record start time
     const startTime = Date.now();
 
     // Add loading indicator with unique ID
@@ -109,7 +134,7 @@ const App: React.FC = () => {
     }));
 
     try {
-      // 準備時間戳記
+      // Prepare timestamp
       const currentTimestamp = new Date().toLocaleString('zh-TW', {
         timeZone: 'Asia/Taipei',
         year: 'numeric',
@@ -120,7 +145,7 @@ const App: React.FC = () => {
         weekday: 'long'
       });
       
-      // 發送訊息，包含位置和時間資訊
+      // Send message, including location and time information
       const response = await apiService.sendMessage(
         message, 
         true, 
@@ -128,7 +153,7 @@ const App: React.FC = () => {
         currentTimestamp
       );
       
-      // 計算回覆時間
+      // Calculate response time
       const endTime = Date.now();
       const responseTimeSeconds = Math.round((endTime - startTime) / 1000);
       
@@ -187,7 +212,32 @@ const App: React.FC = () => {
   }, []);
 
   const toggleView = useCallback(() => {
-    setState(prev => ({ ...prev, isMapView: !prev.isMapView }));
+    setState(prev => ({ 
+      ...prev, 
+      isMapView: !prev.isMapView,
+      isEditMode: false,  // Close edit mode when switching views
+      isStoryMode: false  // Close story mode when switching views
+    }));
+  }, []);
+
+  const toggleEditMode = useCallback(() => {
+    setState(prev => ({ ...prev, isEditMode: !prev.isEditMode }));
+  }, []);
+
+  const toggleStoryMode = useCallback(() => {
+    setState(prev => ({ 
+      ...prev, 
+      isStoryMode: !prev.isStoryMode,
+      isMapView: false,  // Close map view when entering story mode
+      isEditMode: false  // Close edit mode when entering story mode
+    }));
+  }, []);
+
+  const addCustomLocation = useCallback((newLocation: LocationData) => {
+    setState(prev => ({
+      ...prev,
+      customLocations: [...prev.customLocations, newLocation]
+    }));
   }, []);
 
   // Memoize computed values
@@ -209,6 +259,10 @@ const App: React.FC = () => {
         onToggleView={toggleView}
         healthStatus={state.healthStatus}
         onRefresh={initializeApp}
+        isEditMode={state.isEditMode}
+        onToggleEditMode={toggleEditMode}
+        isStoryMode={state.isStoryMode}
+        onToggleStoryMode={toggleStoryMode}
       />
 
       {/* Main content area */}
@@ -218,41 +272,65 @@ const App: React.FC = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        {/* Left chat interface */}
-        <motion.div 
-          className={`${state.isMapView ? 'w-1/2 border-r border-gray-200' : 'w-full'} flex flex-col`}
-          layout
-          transition={{ duration: 0.3 }}
-        >
-          {/* Quick action buttons */}
-          <QuickActions 
-            onQuickAction={handleQuickAction} 
-            onLocationUpdate={handleLocationUpdate}
-          />
-          
-          {/* Chat interface */}
-          <div className="flex-1 overflow-hidden">
-            <ChatInterface
-              messages={state.messages}
-              onSendMessage={handleSendMessage}
-              isLoading={isLoadingComputed}
-              inputText={inputText}
-              onInputTextChange={setInputText}
-            />
-          </div>
-        </motion.div>
-
-        {/* Right side map */}
-        {state.isMapView && (
+        {/* Story Mode */}
+        {state.isStoryMode ? (
           <motion.div 
-            className="w-1/2"
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 100 }}
+            className="w-full"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
             transition={{ duration: 0.3 }}
           >
-            <MapView locations={state.locations} />
+            <StoryModeReal 
+              availableLocations={state.locations}
+              availableShrines={state.shrines}
+            />
           </motion.div>
+        ) : (
+          <>
+            {/* Left chat interface */}
+            <motion.div 
+              className={`${state.isMapView ? 'w-1/2 border-r border-gray-200' : 'w-full'} flex flex-col`}
+              layout
+              transition={{ duration: 0.3 }}
+            >
+              {/* Quick action buttons */}
+              <QuickActions 
+                onQuickAction={handleQuickAction} 
+                onLocationUpdate={handleLocationUpdate}
+              />
+              
+              {/* Chat interface */}
+              <div className="flex-1 overflow-hidden">
+                <ChatInterface
+                  messages={state.messages}
+                  onSendMessage={handleSendMessage}
+                  isLoading={isLoadingComputed}
+                  inputText={inputText}
+                  onInputTextChange={setInputText}
+                />
+              </div>
+            </motion.div>
+
+            {/* Right side map */}
+            {state.isMapView && (
+              <motion.div 
+                className="w-1/2"
+                initial={{ opacity: 0, x: 100 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 100 }}
+                transition={{ duration: 0.3 }}
+              >
+                <MapView 
+                  locations={state.locations} 
+                  shrines={state.shrines} 
+                  customLocations={state.customLocations}
+                  isEditMode={state.isEditMode}
+                  onAddCustomLocation={addCustomLocation}
+                />
+              </motion.div>
+            )}
+          </>
         )}
       </motion.div>
     </div>

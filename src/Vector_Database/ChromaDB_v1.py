@@ -103,13 +103,15 @@ class ChromaDBManager:
                 sqlite_file.rename(backup_file)
                 self.logger.info(f"已備份可能損壞的資料庫檔案：{backup_file}")
             
-            # 清理其他可能的損壞檔案
+            # 清理其他可能的損壞檔案（排除備份檔案）
             for file_path in self.db_path.glob("*"):
-                if file_path.is_file() and file_path.suffix in ['.sqlite3', '.db']:
-                    if file_path.name != 'chroma.sqlite3':
-                        backup_file = self.db_path / f"{file_path.stem}_backup_{int(time.time())}{file_path.suffix}"
-                        file_path.rename(backup_file)
-                        self.logger.info(f"已備份檔案：{backup_file}")
+                if (file_path.is_file() and 
+                    file_path.suffix in ['.sqlite3', '.db'] and 
+                    file_path.name != 'chroma.sqlite3' and
+                    not file_path.name.startswith('chroma_backup_')):
+                    backup_file = self.db_path / f"{file_path.stem}_backup_{int(time.time())}{file_path.suffix}"
+                    file_path.rename(backup_file)
+                    self.logger.info(f"已備份檔案：{backup_file}")
                         
         except Exception as e:
             self.logger.warning(f"清理資料庫檔案時發生錯誤：{e}")
@@ -363,9 +365,9 @@ class ChromaDBManager:
                                 if key and value:  # 確保 key 和 value 都不是空字串
                                     data[key] = value
                 else:
-                    self.logger.warning(f"基本資訊表格內容為空")
+                    self.logger.debug(f"基本資訊表格內容為空或格式不正確")
             else:
-                self.logger.warning(f"無法找到基本資訊表格")
+                self.logger.debug(f"無法找到基本資訊表格，可能是格式不同")
             
             # 提取詳細描述
             desc_match = re.search(r'### 詳細描述\n\n(.*?)(?=\n### |$)', section_content, re.DOTALL)
@@ -408,12 +410,16 @@ class ChromaDBManager:
             self.logger.error(f"問題內容前100字符: {section_content[:100] if section_content else 'None'}")
             return None
     
-    def load_and_process_files(self, locations_file: str, shrines_file: str) -> Tuple[List[Dict], List[Dict]]:
+    def load_and_process_files(self, locations_file: str, shrines_file: str, 
+                             max_locations: Optional[int] = None, 
+                             max_shrines: Optional[int] = None) -> Tuple[List[Dict], List[Dict]]:
         """載入並處理 markdown 檔案
         
         Args:
             locations_file: 景點檔案路徑
             shrines_file: 神社檔案路徑
+            max_locations: 最大景點數量限制 (None = 無限制)
+            max_shrines: 最大神社數量限制 (None = 無限制，預設199)
             
         Returns:
             處理後的景點和神社資料
@@ -421,12 +427,23 @@ class ChromaDBManager:
         locations_data = []
         shrines_data = []
         
+        # 設定預設值
+        if max_shrines is None:
+            max_shrines = 199  # 保持原有的神社限制
+        
         # 處理景點檔案
         try:
             with open(locations_file, 'r', encoding='utf-8') as f:
                 locations_content = f.read()
-            locations_data = self.parse_markdown_sections(locations_content, "locations")
-            self.logger.info(f"成功解析 {len(locations_data)} 個景點")
+            all_locations_data = self.parse_markdown_sections(locations_content, "locations")
+            
+            # 應用景點數量限制
+            if max_locations is not None and max_locations > 0:
+                locations_data = all_locations_data[:max_locations]
+                self.logger.info(f"成功解析 {len(locations_data)} 個景點 (限制: {max_locations})")
+            else:
+                locations_data = all_locations_data
+                self.logger.info(f"成功解析 {len(locations_data)} 個景點")
         except Exception as e:
             self.logger.error(f"載入景點檔案失敗：{e}")
         
@@ -434,8 +451,15 @@ class ChromaDBManager:
         try:
             with open(shrines_file, 'r', encoding='utf-8') as f:
                 shrines_content = f.read()
-            shrines_data = self.parse_markdown_sections(shrines_content, "shrines")
-            self.logger.info(f"成功解析 {len(shrines_data)} 個神社")
+            all_shrines_data = self.parse_markdown_sections(shrines_content, "shrines")
+            
+            # 應用神社數量限制
+            if max_shrines > 0:
+                shrines_data = all_shrines_data[:max_shrines]
+                self.logger.info(f"成功解析 {len(shrines_data)} 個神社 (限制: {max_shrines})")
+            else:
+                shrines_data = all_shrines_data
+                self.logger.info(f"成功解析 {len(shrines_data)} 個神社")
         except Exception as e:
             self.logger.error(f"載入神社檔案失敗：{e}")
         
@@ -674,10 +698,10 @@ def main():
             print(f"❌ 神社檔案不存在：{shrines_file}")
             return
         
-        # 載入並處理檔案
+        # 載入並處理檔案（使用限制資料量以提升效能）
         print("📚 載入並處理 Markdown 檔案...")
         locations_data, shrines_data = chroma_manager.load_and_process_files(
-            locations_file, shrines_file
+            locations_file, shrines_file, max_locations=50, max_shrines=50
         )
         
         # 合併所有資料

@@ -10,8 +10,10 @@ import sys
 from pathlib import Path
 from typing import List, Dict, Any, Optional
 import logging
+import base64
+import json
 from contextlib import asynccontextmanager
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Response, File, UploadFile, Form
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
@@ -22,6 +24,8 @@ from dotenv import load_dotenv
 # 加入專案根目錄到 Python 路徑
 project_root = Path(__file__).parent.parent
 sys.path.append(str(project_root))
+print(f"Project root: {project_root}")
+print(f"Python path: {sys.path}")
 
 try:
     from src.Vector_Database.ChromaDB_v1 import ChromaDBManager
@@ -91,6 +95,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# 設定靜態檔案服務 - 提供景點照片
+data_path = Path(__file__).parent.parent / "data"
+if data_path.exists():
+    app.mount("/data", StaticFiles(directory=str(data_path)), name="data")
+
 # Pydantic 模型
 class ChatRequest(BaseModel):
     message: str
@@ -117,6 +126,26 @@ class LocationsResponse(BaseModel):
     success: bool = True
     error: Optional[str] = None
 
+class SelectedLocation(BaseModel):
+    id: str
+    name: str
+    city: str
+    coordinates: Dict[str, float]
+
+class TravelDay(BaseModel):
+    id: str
+    date: str
+    locations: List[SelectedLocation]
+
+class StoryRequest(BaseModel):
+    travelDays: List[TravelDay]
+    travel_date: Optional[str] = None
+
+class StoryResponse(BaseModel):
+    story: str
+    success: bool = True
+    error: Optional[str] = None
+
 # 全域變數
 chroma_manager = None
 
@@ -137,9 +166,9 @@ async def load_initial_data():
             print("⚠️ 資料檔案不存在，跳過資料載入")
             return
         
-        # 載入並處理檔案
+        # 載入並處理檔案（使用限制資料量以提升效能）
         locations_data, shrines_data = chroma_manager.load_and_process_files(
-            str(locations_file), str(shrines_file)
+            str(locations_file), str(shrines_file), max_locations=50, max_shrines=50
         )
         
         # 合併並插入資料
@@ -253,50 +282,50 @@ async def chat(request: ChatRequest):
             lat = request.user_location.get('latitude')
             lng = request.user_location.get('longitude')
             if lat and lng:
-                location_context = f"\n\n[使用者位置: 緯度 {lat:.4f}, 經度 {lng:.4f}]"
+                location_context = f"\n\n[User location: Latitude {lat:.4f}, Longitude {lng:.4f}]"
                 enhanced_message += location_context
                 
                 # 檢查使用者是否在福井縣境內或附近
                 if is_near_fukui(lat, lng):
-                    enhanced_message += "\n[注意: 使用者目前在福井縣境內或附近，請優先推薦距離較近的景點]"
+                    enhanced_message += "\n[Note: User is currently in or near Fukui Prefecture, please prioritize recommending nearby attractions]"
         
         # 搜尋相關文件 - 使用地理位置感知搜尋
         relevant_docs = chroma_manager.search_similar_with_location(
             enhanced_message, 
             n_results=5,
-            max_distance_km=50.0 if request.user_location else None
+            distance_threshold_km=50.0 if request.user_location else 20.0
         )
         
         if not relevant_docs:
             return ChatResponse(
-                answer="抱歉，我找不到相關資訊。請嘗試詢問其他關於福井縣觀光景點或神社的問題。",
+                answer="Sorry, I couldn't find relevant information. Please try asking other questions about Fukui Prefecture tourist attractions or shrines.",
                 sources=[],
                 success=True
             )
         
         # 建立系統提示，包含時間和位置感知
-        system_prompt = f"""你是一位專業的福井縣觀光導遊 AI 助手。請根據以下資訊回答問題：
+        system_prompt = f"""You are a professional Fukui Prefecture tourism guide AI assistant. Please answer questions based on the following information:
 
-1. 時間感知：
-   - 如果提到季節活動，請考慮當前時間 {request.timestamp or '(未提供時間資訊)'}
-   - 根據季節推薦最適合的景點和活動
-   - 提醒使用者注意營業時間和季節性關閉資訊
+1. Time Awareness:
+   - If seasonal activities are mentioned, consider the current time {request.timestamp or '(no time information provided)'}
+   - Recommend the most suitable attractions and activities based on the season
+   - Remind users to pay attention to operating hours and seasonal closure information
 
-2. 位置感知：
-   {f"- 使用者位置：{location_context}" if location_context else "- 未提供使用者位置資訊"}
-   - 如果使用者在福井縣內，優先推薦附近景點
-   - 提供具體的交通指引和距離資訊
-   - 考慮實際的交通便利性
+2. Location Awareness:
+   {f"- User location: {location_context}" if location_context else "- No user location information provided"}
+   - If the user is in Fukui Prefecture, prioritize nearby attractions
+   - Provide specific transportation guidance and distance information
+   - Consider actual transportation convenience
 
-3. 回答風格：
-   - 使用繁體中文回答
-   - 提供詳細且實用的資訊
-   - 包含交通方式、開放時間、特色介紹
-   - 適當加入當地文化背景"""
+3. Response Style:
+   - Respond in English
+   - Provide detailed and practical information
+   - Include transportation methods, opening hours, and feature introductions
+   - Appropriately include local cultural background"""
         
         # 使用 GPT 生成專業導遊式回答
         answer = chroma_manager.ask_gpt(
-            f"{system_prompt}\n\n使用者問題：{request.message}", 
+            f"{system_prompt}\n\nUser question: {request.message}", 
             relevant_docs,
             use_location_aware_search=False  # 已經使用地理位置搜尋了
         )
@@ -306,7 +335,7 @@ async def chat(request: ChatRequest):
         if request.include_sources:
             for doc in relevant_docs:
                 source_info = {
-                    "title": doc['metadata'].get('title', '未知'),
+                    "title": doc['metadata'].get('title', 'Unknown'),
                     "type": doc['metadata'].get('source_type', 'unknown'),
                     "content": doc['content'][:200] + "..." if len(doc['content']) > 200 else doc['content']
                 }
@@ -326,7 +355,7 @@ async def chat(request: ChatRequest):
     except Exception as e:
         logging.error(f"Chat processing error: {e}")
         return ChatResponse(
-            answer="抱歉，處理您的問題時發生錯誤。請稍後再試。",
+            answer="Sorry, an error occurred while processing your question. Please try again later.",
             sources=[],
             success=False,
             error=str(e)
@@ -387,7 +416,7 @@ async def get_locations(limit: int = 200, search: Optional[str] = None):
             
             # 獲取本地圖片路徑
             city = original_data.get('city', '')
-            location_name = google_data.get('name', '未知景點')
+            location_name = google_data.get('name', 'Unknown Attraction')
             local_image_path = get_local_image_path(city, location_name)
             
             # 建立位置物件 - 優先使用Google Maps的精確座標
@@ -442,7 +471,9 @@ async def get_locations(limit: int = 200, search: Optional[str] = None):
                     "website": google_data.get('website'),
                     "address": google_data.get('formatted_address'),
                     "photo_url": google_data.get('photos', [None])[0] if google_data.get('photos') else None,
-                    "local_image": f"/images/{city}/{Path(local_image_path).name}" if local_image_path else None
+                    "local_image": f"/images/{city}/{Path(local_image_path).name}" if local_image_path else None,
+                    "unique_key": location.get('unique_key', ''),  # 加入原始的 unique_key
+                    "original_location_name": original_data.get('location', location_name)  # 加入原始位置名稱
                 },
                 coordinates=coordinates
             ))
@@ -457,6 +488,102 @@ async def get_locations(limit: int = 200, search: Optional[str] = None):
         logging.error(f"取得位置資料錯誤：{e}")
         raise HTTPException(status_code=500, detail=f"取得位置資料失敗：{str(e)}")
 
+@app.get("/shrines", response_model=LocationsResponse)
+async def get_shrines(limit: int = 500, search: Optional[str] = None):
+    """取得寺廟神社位置資料用於地圖顯示"""
+    try:
+        # 載入寺廟神社資料
+        import json
+        base_path = Path(__file__).parent.parent
+        shrines_file = base_path / "output" / "enhanced_shrines_full.json"
+        
+        if not shrines_file.exists():
+            raise HTTPException(status_code=404, detail="寺廟資料檔案不存在")
+            
+        with open(shrines_file, 'r', encoding='utf-8') as f:
+            shrines_data = json.load(f)
+        
+        shrines = []
+        for i, shrine in enumerate(shrines_data[:limit]):
+            if search and search.lower() not in shrine.get('name_jp', '').lower() and search.lower() not in shrine.get('name_en', '').lower():
+                continue
+            
+            # 取得座標
+            coordinates = None
+            lat = shrine.get('lat')
+            lng = shrine.get('lon')
+            
+            if lat is not None and lng is not None:
+                try:
+                    lat_float = float(lat)
+                    lng_float = float(lng)
+                    # 檢查座標是否在福井縣合理範圍內
+                    if 35.0 <= lat_float <= 36.5 and 135.5 <= lng_float <= 137.0:
+                        coordinates = {"lat": lat_float, "lng": lng_float}
+                    else:
+                        print(f"Shrine coordinates out of Fukui range for {shrine.get('name_jp')}: {lat_float}, {lng_float}")
+                except (ValueError, TypeError):
+                    print(f"Invalid shrine coordinates for {shrine.get('name_jp')}: {lat}, {lng}")
+            
+            # 建立內容描述
+            content_parts = []
+            if shrine.get('type'):
+                content_parts.append(f"類型: {shrine.get('type')}")
+            if shrine.get('address'):
+                content_parts.append(f"地址: {shrine.get('address')}")
+            if shrine.get('phone') and shrine.get('phone') != '-':
+                content_parts.append(f"電話: {shrine.get('phone')}")
+            if shrine.get('founded_year') and shrine.get('founded_year') != '不明':
+                content_parts.append(f"創建年份: {shrine.get('founded_year')}")
+            if shrine.get('enshrined_deities'):
+                deities = [deity.get('name', '') for deity in shrine.get('enshrined_deities', [])]
+                if deities:
+                    content_parts.append(f"祭神: {', '.join(deities)}")
+            
+            content = '\n'.join(content_parts) if content_parts else shrine.get('description', '')[:200]
+            
+            # 處理最佳季節資訊
+            best_seasons = shrine.get('best_seasons', [])
+            if best_seasons:
+                content += f"\n最佳參拜季節: {', '.join(best_seasons)}"
+                
+            shrines.append(LocationData(
+                id=f"shrine_{i}",
+                title=shrine.get('name_jp', 'Unknown Shrine'),
+                content=content,
+                metadata={
+                    "source_type": "shrines",
+                    "category": "shrine",
+                    "type": shrine.get('type', '神社'),
+                    "city": shrine.get('city', ''),
+                    "prefecture": shrine.get('prefecture', '福井県'),
+                    "name_en": shrine.get('name_en', ''),
+                    "romaji": shrine.get('romaji', ''),
+                    "address": shrine.get('address', ''),
+                    "phone": shrine.get('phone', ''),
+                    "url": shrine.get('url', ''),
+                    "founded_year": shrine.get('founded_year', ''),
+                    "goshuin": shrine.get('goshuin', False),
+                    "admission_fee": shrine.get('admission_fee', 0),
+                    "wheelchair_access": shrine.get('wheelchair_access', False),
+                    "best_seasons": shrine.get('best_seasons', []),
+                    "enshrined_deities": shrine.get('enshrined_deities', []),
+                    "gate_open": shrine.get('gate_open', ''),
+                    "gate_close": shrine.get('gate_close', '')
+                },
+                coordinates=coordinates
+            ))
+        
+        return LocationsResponse(
+            locations=shrines,
+            total_count=len(shrines),
+            success=True
+        )
+        
+    except Exception as e:
+        logging.error(f"取得寺廟資料錯誤：{e}")
+        raise HTTPException(status_code=500, detail=f"取得寺廟資料失敗：{str(e)}")
+
 @app.get("/search")
 async def search_locations(query: str, limit: int = 10):
     """搜尋特定景點或神社"""
@@ -469,7 +596,7 @@ async def search_locations(query: str, limit: int = 10):
         formatted_results = []
         for result in results:
             formatted_results.append({
-                "title": result['metadata'].get('title', '未知'),
+                "title": result['metadata'].get('title', 'Unknown'),
                 "type": result['metadata'].get('source_type', 'unknown'),
                 "content": result['content'][:300] + "..." if len(result['content']) > 300 else result['content'],
                 "metadata": result['metadata']
@@ -485,12 +612,176 @@ async def search_locations(query: str, limit: int = 10):
         logging.error(f"搜尋錯誤：{e}")
         raise HTTPException(status_code=500, detail=f"搜尋失敗：{str(e)}")
 
+@app.post("/api/generate-story", response_model=StoryResponse)
+async def generate_story(
+    locations: str = Form(...),
+    travel_date_range: str = Form(...),
+    images: List[UploadFile] = File(default=[])
+):
+    """Generate Fukui travel story book"""
+    try:
+        # Parse locations data
+        locations_data = json.loads(locations)
+        travel_date_range_data = json.loads(travel_date_range)
+        
+        if not locations_data:
+            raise HTTPException(status_code=400, detail="At least one location is required")
+        
+        # Process uploaded images
+        image_descriptions = []
+        for i, image in enumerate(images):
+            if image.content_type and image.content_type.startswith('image/'):
+                # Read image content
+                image_content = await image.read()
+                # Convert image to base64
+                image_base64 = base64.b64encode(image_content).decode('utf-8')
+                image_descriptions.append(f"Image {i+1}: {image.filename}")
+        
+        # Prepare OpenAI API request
+        import openai
+        from openai import OpenAI
+        
+        # Set up OpenAI client
+        openai_api_key = os.getenv("OPENAI_API_KEY")
+        if not openai_api_key:
+            raise HTTPException(
+                status_code=500, 
+                detail="OpenAI API key not configured. Please set OPENAI_API_KEY environment variable."
+            )
+        client = OpenAI(api_key=openai_api_key)
+        
+        # Build travel itinerary string with dates
+        itinerary_info = []
+        locations_by_date = {}
+        
+        # Group locations by date
+        for location in locations_data:
+            date = location.get('date', 'Unknown Date')
+            if date not in locations_by_date:
+                locations_by_date[date] = []
+            locations_by_date[date].append(location)
+        
+        # Create itinerary info
+        for date, day_locations in locations_by_date.items():
+            day_info = []
+            for loc in day_locations:
+                coords = loc.get('coordinates', {})
+                lat = coords.get('latitude', 0)
+                lng = coords.get('longitude', 0)
+                day_info.append(f"  - {loc['name']} ({loc['city']}) - Located at latitude {lat:.6f}, longitude {lng:.6f}")
+                if loc.get('description'):
+                    day_info.append(f"    Personal experience: {loc['description']}")
+            
+            formatted_date = date
+            try:
+                # Try to format the date nicely
+                from datetime import datetime
+                date_obj = datetime.strptime(date, '%Y-%m-%d')
+                formatted_date = date_obj.strftime('%B %d, %Y')
+            except:
+                pass
+            
+            itinerary_info.append(f"Date: {formatted_date}\n" + "\n".join(day_info))
+        
+        locations_info = "\n\n".join(itinerary_info) if itinerary_info else "No specific itinerary provided"
+        
+        # Build image information string
+        images_info = "\n".join(image_descriptions) if image_descriptions else "No photos uploaded"
+        
+        # Get travel date range info
+        start_date = travel_date_range_data.get('start', 'Unknown')
+        end_date = travel_date_range_data.get('end', 'Unknown')
+        travel_period = f"{start_date} to {end_date}"
+        
+        # Prepare system prompt
+        system_prompt = """You are a professional travel writer specializing in creating engaging and informative travel stories.
+Please create a beautiful travel story based on the provided Fukui prefecture location information and travel dates.
+
+The story should include:
+1. An engaging introduction mentioning the travel period
+2. Detailed descriptions and experiences for each location, organized by date
+3. Emotional journey progression
+4. Deep appreciation for Fukui's culture and beauty
+5. A warm and memorable conclusion
+
+Writing style requirements:
+- Use English language
+- Beautiful, emotional language
+- Clear structure and logical flow
+- Suitable for sharing on social media or blogs
+- Approximately 800-1200 words
+- Include specific dates and locations in the narrative
+- Make the story feel personal and authentic
+- Organize the story by travel dates"""
+
+        # Prepare user prompt
+        user_prompt = f"""Please create a Fukui travel story for me based on the following travel information:
+
+Travel Period: {travel_period}
+
+Travel Itinerary:
+{locations_info}
+
+Photo Information:
+{images_info}
+
+Please create a vivid and engaging travel story that makes readers feel like they experienced this Fukui journey themselves. Include the specific dates and locations in a natural way throughout the narrative. Organize the story by travel dates to show the progression of the journey."""
+
+        # Call OpenAI API
+        response = client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt}
+            ],
+            max_tokens=2000,
+            temperature=0.8
+        )
+        
+        # Extract generated story
+        story = response.choices[0].message.content
+        
+        return StoryResponse(
+            story=story,
+            success=True
+        )
+        
+    except json.JSONDecodeError:
+        raise HTTPException(status_code=400, detail="Invalid travel days data format")
+    except openai.AuthenticationError:
+        raise HTTPException(status_code=500, detail="OpenAI API authentication failed, please check API key")
+    except openai.RateLimitError:
+        raise HTTPException(status_code=429, detail="API rate limit exceeded, please try again later")
+    except openai.APIError as e:
+        raise HTTPException(status_code=500, detail=f"OpenAI API error: {str(e)}")
+    except Exception as e:
+        logging.error(f"Story generation error: {e}")
+        raise HTTPException(status_code=500, detail=f"Story generation failed: {str(e)}")
+
 if __name__ == "__main__":
-    # 開發模式執行 - 禁用自動重新載入以避免虛擬環境檔案觸發重啟
+    # 開發模式執行 - 優化設定以提高穩定性
+    import signal
+    import sys
+    
+    def signal_handler(sig, frame):
+        print('\n🔄 正在關閉服務...')
+        sys.exit(0)
+    
+    signal.signal(signal.SIGINT, signal_handler)
+    signal.signal(signal.SIGTERM, signal_handler)
+    
+    print("🚀 正在啟動福井觀光智能助手後端服務...")
+    print(f"📡 服務將在 http://0.0.0.0:8001 啟動")
+    print(f"📊 健康檢查端點: http://localhost:8001/health")
+    print("按 Ctrl+C 停止服務")
+    
     uvicorn.run(
         "app:app",
         host="0.0.0.0",
-        port=8002,
-        reload=False,  # 暫時禁用自動重新載入
-        log_level="info"
+        port=8001,
+        reload=False,  # 禁用自動重新載入以提高穩定性
+        log_level="info",
+        access_log=True,
+        server_header=False,
+        date_header=False
     )

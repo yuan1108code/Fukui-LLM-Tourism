@@ -20,7 +20,7 @@ const QuickActions: React.FC<QuickActionsProps> = ({ onQuickAction, onLocationUp
   const [userLocation, setUserLocation] = useState<UserLocation | null>(null);
   const [locationPermission, setLocationPermission] = useState<'granted' | 'denied' | 'prompt' | 'checking'>('checking');
 
-  // 福井縣的主要城市和町村 (mapping Japanese names to English for display and questions)
+  // Major cities and towns in Fukui Prefecture (mapping Japanese names to English for display and questions)
   const fukuiCities = [
     { japanese: '福井市', english: 'Fukui City' },
     { japanese: '敦賀市', english: 'Tsuruga City' },
@@ -41,7 +41,7 @@ const QuickActions: React.FC<QuickActionsProps> = ({ onQuickAction, onLocationUp
     { japanese: '大飯町', english: 'Ohi Town' }
   ];
 
-  // 獲取當前時間和季節資訊
+  // Get current time and season information
   const getCurrentTimeInfo = () => {
     const now = new Date();
     const year = now.getFullYear();
@@ -65,7 +65,7 @@ const QuickActions: React.FC<QuickActionsProps> = ({ onQuickAction, onLocationUp
     };
   };
 
-  // 獲取使用者位置
+  // Get user location
   useEffect(() => {
     const requestLocation = async () => {
       if (!navigator.geolocation) {
@@ -208,18 +208,18 @@ const QuickActions: React.FC<QuickActionsProps> = ({ onQuickAction, onLocationUp
 
     let question = baseQuestions[actionId];
     
-    // 添加時間資訊（特別是季節活動）
+    // Add time information (especially seasonal activities)
     if (actionId === 'seasonal') {
       question = `Please recommend current seasonal events, festivals, or activities in Fukui Prefecture. Current time: ${timeInfo.currentTime}, Season: ${timeInfo.season}. Please focus on events that are typically available during this time of year.`;
     }
     
-    // 添加位置資訊
+    // Add location information
     if (hasLocationOption && selectedCity) {
       // Replace "Fukui Prefecture" with the selected city's English name
       question = question.replace('Fukui Prefecture', selectedCity.english);
     }
     
-    // 如果有使用者位置資訊，加入地理位置
+    // If user location information is available, add geographical location
     if (userLocation && locationPermission === 'granted') {
       const locationText = `\n\nAdditional context: User's current location is approximately ${userLocation.latitude.toFixed(4)}, ${userLocation.longitude.toFixed(4)} (accuracy: ${userLocation.accuracy}m). Please consider recommending nearby attractions if the user is currently in or near Fukui Prefecture.`;
       question += locationText;
@@ -243,7 +243,7 @@ const QuickActions: React.FC<QuickActionsProps> = ({ onQuickAction, onLocationUp
 
   return (
     <div className="bg-white/50 backdrop-blur-sm border-b border-gray-100">
-      {/* 標題列 - 包含收合按鈕 */}
+              {/* Title row - includes collapse button */}
       <div className="p-4 pb-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
