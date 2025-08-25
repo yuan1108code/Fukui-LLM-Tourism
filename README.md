@@ -351,8 +351,7 @@ Welcome to submit Issues and Pull Requests! Please ensure:
 
 For any questions or suggestions, please contact through:
 
-- **GitHub Issues**: [Project Issues Page]
-- **Email**: [Your Email]
+\- **Email**: jeff891108@gmail.comgi
 
 ---
 
