@@ -351,7 +351,7 @@ Welcome to submit Issues and Pull Requests! Please ensure:
 
 For any questions or suggestions, please contact through:
 
-\- **Email**: jeff891108@gmail.comgi
+\- **Email**: jeff891108@smail.nchu.edu.tw
 
 ---
 
